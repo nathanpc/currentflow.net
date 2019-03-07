@@ -1,0 +1,36 @@
+=pod
+
+=head1 NAME
+
+Levissimo - A lightweight static blog generator
+
+=head1 VERSION
+
+0.1.0
+
+=head1 SUMMARY
+
+This is a very minimalistic static blog generator with a very simple and
+flexible page layout, made to work on any platform (even text-based web
+browsers), that can easily be customized to fit into an existing website.
+
+=head1 SYNOPSIS
+
+Just run C<make> and the script will generate all the necessary files for
+deploying the website in the I<site> folder.
+
+=head1 TESTING
+
+To make sure everything is perfect for deployment you can run C<make test>,
+which will run all the unit tests to make sure that you have a working system.
+
+=head1 AUTHOR
+
+Nathan Campos <nathanpc@dreamintech.net>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2019- Nathan Campos.
+
+=cut
+
