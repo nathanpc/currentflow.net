@@ -1,0 +1,60 @@
+/**
+ * main.css
+ * The main styling behind the web site.
+ *
+ * Author: Nathan Campos <nathanpc@dreamintech.net>
+ */
+
+/* General layout */
+body {
+	font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+
+	color: #333333;
+	/*background-color: #F6F6F6;*/
+}
+
+p, li, blockquote {
+	line-height: 28px;
+}
+
+.article-container {
+	margin-left: 1em;
+	margin-right: 1em;
+
+	line-height: 26px;
+}
+
+article > .article-body {
+	text-align: justify;
+}
+
+article > .article-body .image-container {
+	width: 100%;
+	text-align: center;
+}
+
+article > .article-body img {
+	max-width: 100%;
+}
+
+/* Desktops */
+@media (min-width: 992px) {
+	.article-container {
+		width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.article-container > article {
+		width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	article > .article-body img {
+		max-width: 900px;
+	}
+}
+
