@@ -116,6 +116,10 @@ article > .article-body img {
 	color: white;
 }
 	
+footer > p {
+	text-align: center;
+}
+
 /* Desktops */
 @media (min-width: 992px) {
 	header, footer {
@@ -136,10 +140,6 @@ article > .article-body img {
 
 	article > .article-body img {
 		max-width: 900px;
-	}
-
-	footer > p {
-		text-align: center;
 	}
 }
 
