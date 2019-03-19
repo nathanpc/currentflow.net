@@ -8,6 +8,7 @@ use autodie;
 
 use File::Spec;
 use File::Slurp;
+use Term::ANSIColor;
 
 # Constructor.
 sub new {
@@ -22,18 +23,30 @@ sub new {
 
 # Runs the engine over the text.
 sub run {
-	my ($self) = @_;
+	my ($self, %vars) = @_;
 	my $output = $self->{raw};
 
 	# Get template comment file matches in the form of: <!-- [[$file]] -->
-	while ($output =~ /<!--\s?\[\[(.+)\]\]\s?-->/g) {
-		# Open file and read the contents.
-		my $fname = $1;
-		my $floc = File::Spec->catdir(File::Spec->rel2abs('template'), $fname);
-		my $contents = read_file($floc);
+	while ($output =~ /<!--\s?\[\[(?<fname>[\w\d\.\-\_\/]+)\]\]\s?-->/g) {
+		# Open file and read the content.
+		my $floc = File::Spec->catdir(File::Spec->rel2abs('template'), $+{fname});
+		my $content = read_file($floc);
 
-		# Substitute the file contents into the template.
-		substr($output, length($`), length($&), $contents);
+		# Substitute the file content into the template.
+		substr($output, length($`), length($&), $content);
+	}
+
+	# Check for variables after the files have been substituted.
+	while ($output =~ /<!--\s?\|(?<vname>[\w\d\.]+)\|\s?-->/g) {
+		# Get variable value and substitute it.
+		my $value = $vars{$+{vname}};
+
+		if (defined $value) {
+			substr($output, length($`), length($&), $value);
+		} else {
+			warn('[', colored('WARNING', 'yellow'), "] Couldn't find variable '",
+				$+{vname}, "'. Ignoring...\n");
+		}
 	}
 
 	return $output;
@@ -54,6 +67,14 @@ Template::Engine - Super simple and HTML-friendly templating engine.
   
   # Get generated text.
   my $final_text = $template->run();
+  $final_text = $template->run(
+  	some_var => 'Hello, World!',
+	foo => 'bar'
+  );
+
+=head1 USAGE
+
+TODO: Describe how to use the template language and how each method is defined.
 
 =head1 METHODS
 
@@ -65,9 +86,10 @@ Initializes a new template object using the template text provided by
 I<$raw_text> which can be used to generate several different outputs depending
 on the parameters passed to I<$template>->C<run>().
 
-=item I<$output> = I<$template>->C<run>()
+=item I<$output> = I<$template>->C<run>(I<%vars>)
 
-Run the engine over the file and get the finalized output text.
+Run the engine over the file and get the finalized output text with the option
+of substituting variables defined by I<%vars>.
 
 =back
 

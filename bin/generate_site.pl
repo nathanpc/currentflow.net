@@ -22,7 +22,10 @@ my $template = Template::Engine->new($template_text);
 
 print "[INDEX] Opening file to be written: $fn_out\n";
 open(my $out, '>:encoding(UTF-8)', $fn_out);
-print $out $template->run();
+print $out $template->run(
+	"blog.title" => "Levissimo Blog",
+	"blog.subtitle" => "A blog about everything related to the project"
+);
 close($out);
 print "[INDEX] Closed the finished file\n";
 
