@@ -12,10 +12,19 @@ use Term::ANSIColor;
 
 # Constructor.
 sub new {
-	my ($class, $raw_text) = @_;
+	my ($class, %opts) = @_;
 	my $self = {
-		raw => $raw_text
+		raw => $opts{raw},
+		filename => $opts{file},
+		filepath => undef
 	};
+
+	# Get absolute file path and content if a file was given as input.
+	if (defined $opts{file}) {
+		$self->{filepath} = File::Spec->catdir(File::Spec->rel2abs('template'),
+			$opts{file});
+		$self->{raw} = read_template($self->{filename});
+	}
 
 	bless $self, $class;
 	return $self;
@@ -29,8 +38,7 @@ sub run {
 	# Get template comment file matches in the form of: <!-- [[$file]] -->
 	while ($output =~ /<!--\s?\[\[(?<fname>[\w\d\.\-\_\/]+)\]\]\s?-->/g) {
 		# Open file and read the content.
-		my $floc = File::Spec->catdir(File::Spec->rel2abs('template'), $+{fname});
-		my $content = read_file($floc);
+		my $content = read_template($+{fname});
 
 		# Substitute the file content into the template.
 		substr($output, length($`), length($&), $content);
@@ -52,6 +60,14 @@ sub run {
 	return $output;
 }
 
+# Read the content of a template file.
+sub read_template {
+	my ($filename) = @_;
+
+	my $abs_path = File::Spec->catdir(File::Spec->rel2abs('template'), $filename);
+	return read_file($abs_path);
+}
+
 1;
 
 __END__
@@ -62,11 +78,17 @@ Template::Engine - Super simple and HTML-friendly templating engine.
 
 =head1 SYNOPSIS
 
-  # Create a new template instance.
-  my $template = Template::Engine->new($raw_text);
+  # Optionally get the template from a file.
+  my $raw_text = Template::Engine->read_template('test.html');
   
-  # Get generated text.
+  # Create a new template instance.
+  my $template = Template::Engine->new(raw => $raw_text);
+  $template = Template::Engine->new(file => 'test.html');
+  
+  # Get generated text without passing any variables.
   my $final_text = $template->run();
+
+  # Get generated text with some variables substituted.
   $final_text = $template->run(
   	some_var => 'Hello, World!',
 	foo => 'bar'
@@ -80,16 +102,22 @@ TODO: Describe how to use the template language and how each method is defined.
 
 =over 4
 
-=item I<$template> = C<Template::Engine>->C<new>(I<$raw_text>)
+=item I<$template> = C<Template::Engine>->C<new>(I<%opts>)
 
 Initializes a new template object using the template text provided by
-I<$raw_text> which can be used to generate several different outputs depending
-on the parameters passed to I<$template>->C<run>().
+I<raw> or a file path relative to the I<template/> directory in the root of
+project provided via I<file>. This templatecan be used to generate several
+different outputs depending on the parameters passed to I<$template>->C<run>().
 
 =item I<$output> = I<$template>->C<run>(I<%vars>)
 
 Run the engine over the file and get the finalized output text with the option
 of substituting variables defined by I<%vars>.
+
+=item I<$raw_text> = C<Template::Engine>->C<read_template>(I<$filename>)
+
+Read the content of a template file residing in the I<template/> folder at the
+root of the project firectory.
 
 =back
 
