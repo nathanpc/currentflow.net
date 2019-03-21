@@ -67,9 +67,7 @@ sub _parse_file {
 	$self->{title} = $tags{title};
 	$self->{author} = $tags{author};
 	$self->{date} = $tags{created};
-
-	# TODO: Get post body.
-	$self->{body} = "<p>Hello, world!</p>\n";
+	$self->{body} = $article;
 }
 
 # Parses the meta tags in the article.
