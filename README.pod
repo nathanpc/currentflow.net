@@ -11,13 +11,31 @@ Levissimo - A lightweight static blog generator
 =head1 SUMMARY
 
 This is a very minimalistic static blog generator with a very simple and
-flexible page layout, made to work on any platform (even text-based web
-browsers), that can easily be customized to fit into an existing website.
+flexible page layout that is self-contained and doesn't rely on any external
+components, made to work on any platform (even text-based web browsers), that
+can easily be customized to fit into an existing website.
+
+The focus of this project is to use all the available standards in other
+to generate a blog, without silly things like Markdown with a front-matter.
+Posts are written with plain HTML, just like the rest of the website layout, and
+the additional parameters are specified using standardized C<meta> tags.
 
 =head1 SYNOPSIS
 
 Just run C<make> and the script will generate all the necessary files for
 deploying the website in the I<site> folder.
+
+=head1 FOLDERS
+
+This project has a very simple folder layout for you to use and customize as
+needed.
+
+C<static/> - Where all your static files should be placed. This folder will be
+copied as-is with its structure preserved to the output folder.
+C<template/> - Where all the important website templates for things like page
+layout and etc should be.
+C<posts/> - Where you should place your posts.
+C<site/> - The output folder where your finalized website should reside.
 
 =head1 TESTING
 
