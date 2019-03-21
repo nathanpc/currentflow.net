@@ -21,6 +21,7 @@ sub new {
 		author => undef,
 		date => undef,
 		body => undef,
+		tags => undef,
 		_file => $file,
 		_template => Template::Engine->new(file => 'article.html')
 	};
@@ -35,7 +36,7 @@ sub render {
 	my $output = "";
 
 	# If the article file hasn't been parsed yet, parse it.
-	if (not defined $self->{title}) {
+	if (not defined $self->{tags}) {
 		$self->_parse_file();
 	}
 
@@ -60,6 +61,7 @@ sub _parse_file {
 	# Parse tags and check if all the required parameters are present.
 	my %tags = _parse_meta_tags($article);
 	_check_required_params(\%tags);
+	$self->{tags} = \%tags;
 
 	# Populate class parameters.
 	$self->{title} = $tags{title};
@@ -87,13 +89,13 @@ sub _parse_meta_tags {
 
 # Check if all the required parameters are present.
 sub _check_required_params {
-	my ($param) = @_;
+	my ($tags) = @_;
 	my @requirements = ('title', 'author', 'created');
 	my $fail = 0;
 
 	# Iterate over the required parameters.
 	for my $req_param (@requirements) {
-		if (not defined $param->{$req_param}) {
+		if (not defined $tags->{$req_param}) {
 			$fail = 1;
 			carp '[', colored('WARNING', 'yellow'), "] Required parameter $req_param not present";
 		}
@@ -106,4 +108,57 @@ sub _check_required_params {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Page::Object::Article - A simple object representing a article.
+
+=head1 METHODS
+
+=over 4
+
+=item I<$article> = C<Page::Object::Article>->C<new>(I<$file>)
+
+Initializes a new article obejct with a base file described in I<$file> that
+should be located under the I<posts/> folder.
+
+=item I<$output> = I<$article>->C<render>()
+
+Runs the parser through the post file and generates a output according to the
+default article template.
+
+=back
+
+=head1 PRIVATE
+
+=over 4
+
+=item I<$self>->C<_parse_file>()
+
+Parses the whole article looking for tags and populates the object for rendering.
+
+=item I<%tags> = C<_parse_meta_tags>($article)
+
+Parses all the C<meta> tags inside the article file content, provided as
+I<$article>, and returns them in the form of a hash.
+
+=item C<_check_required_params>(I<$tags>)
+
+Checks if all the required tags are present in the hash reference I<$tags>.
+
+Required parameters: I<title>, I<author>, I<created>.
+
+=back
+
+=head1 AUTHOR
+
+Nathan Campos <nathanpc@dreamintech.net>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2019 Nathan Campos.
+
+=cut
 
