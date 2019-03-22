@@ -15,15 +15,19 @@ use Template::Engine;
 
 # Constructor.
 sub new {
-	my ($class, $file) = @_;
+	my ($class, %params) = @_;
 	my $self = {
 		title => undef,
 		author => undef,
 		date => undef,
 		body => undef,
 		tags => undef,
-		_file => $file,
-		_template => Template::Engine->new(file => 'article.html')
+		_file => File::Spec->catdir(File::Spec->rel2abs(
+				$params{config}->{folders}->{posts}), $params{file}),
+		_config => $params{config},
+		_template => Template::Engine->new(
+			file => 'article.html',
+			config => $params{config})
 	};
 
 	bless $self, $class;
@@ -54,9 +58,7 @@ sub render {
 # Parses an article file and populates the class.
 sub _parse_file {
 	my ($self) = @_;
-	my $filepath = File::Spec->catdir(File::Spec->rel2abs('posts'),
-		$self->{_file});
-	my $article = read_file($filepath);
+	my $article = read_file($self->{_file});
 
 	# Parse tags and check if all the required parameters are present.
 	my %tags = _parse_meta_tags($article);
@@ -117,10 +119,11 @@ Page::Object::Article - A simple object representing a article.
 
 =over 4
 
-=item I<$article> = C<Page::Object::Article>->C<new>(I<$file>)
+=item I<$article> = C<Page::Object::Article>->C<new>(I<%params>)
 
-Initializes a new article obejct with a base file described in I<$file> that
-should be located under the I<posts/> folder.
+Initializes a new article obejct with a base file described in I<file> relative
+to the default posts folder as defined in the C<Config::Tiny> object passed as
+I<config>.
 
 =item I<$output> = I<$article>->C<render>()
 

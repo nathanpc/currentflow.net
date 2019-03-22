@@ -19,8 +19,8 @@ sub new {
 		output => "",
 		_config => $config,
 		_template => $template,
-		_outputfile => File::Spec->catdir(File::Spec->rel2abs('site/'),
-			$outputfile)
+		_outputfile => File::Spec->catdir(File::Spec->rel2abs(
+				$config->{folders}->{output}), $outputfile)
 	};
 
 	bless $self, $class;

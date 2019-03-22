@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use autodie;
 
-use File::Slurp;
+use Config::Tiny;
 
 # Include the project module directory.
 use FindBin;
@@ -15,31 +15,26 @@ use Template::Engine;
 use Page::Object::Article;
 use Page::Base;
 
+# Open the config file.
+my $config = Config::Tiny->read('config/levissimo.conf');
+
 # Read index page template.
-my $fn_in = "index.html";
-#print "[LOG] Reading template from $fn_in\n";
-my $template = Template::Engine->new(file => $fn_in);
-
-# Create an article.
-my $article = Page::Object::Article->new('2019-03-20_Power12_The_Mini6_Again_But_Better.html');
-
-# Create a page.
-my $page = Page::Base->new("config", $template, 'index.html');
-$page->render(
-	"blog.title" => "Levissimo Blog",
-	"blog.subtitle" => "A blog about everything related to the project",
-	"article.main" => $article->render()
+my $template = Template::Engine->new(
+	file => 'index.html',
+	config => $config
 );
 
-# Write the page to the output file.
-#my $fn_out = File::Spec->rel2abs("site/index.html");
-#print "[LOG] Opening output file: $fn_out\n";
-#open(my $out, '>:encoding(UTF-8)', $fn_out);
-#print $out $template->run(
-#	"blog.title" => "Levissimo Blog",
-#	"blog.subtitle" => "A blog about everything related to the project",
-#	"article.main" => $article->render()
-#);
-#close($out);
-#print "[LOG] Finished writing the index.html file\n";
+# Create an article.
+my $article = Page::Object::Article->new(
+	file => '2019-03-20_Power12_The_Mini6_Again_But_Better.html',
+	config => $config
+);
+
+# Create a page.
+my $page = Page::Base->new($config, $template, 'index.html');
+$page->render(
+	"blog.title" => $config->{blog}->{title},
+	"blog.subtitle" => $config->{blog}->{title},
+	"article.main" => $article->render()
+);
 

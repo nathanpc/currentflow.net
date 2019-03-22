@@ -15,14 +15,20 @@ sub new {
 	my ($class, %opts) = @_;
 	my $self = {
 		raw => $opts{raw},
+		config => $opts{config},
 		filename => $opts{file},
 		filepath => undef
 	};
 
 	# Get absolute file path and content if a file was given as input.
 	if (defined $opts{file}) {
-		$self->{filepath} = File::Spec->catdir(File::Spec->rel2abs('template'),
-			$opts{file});
+		my $template_folder = 'template/';
+		if (defined $self->{config}) {
+			$template_folder = $self->{config}->{folders}->{templates};
+		}
+
+		$self->{filepath} = File::Spec->catdir(File::Spec->rel2abs(
+				$template_folder), $opts{file});
 		$self->{raw} = read_template($self->{filename});
 	}
 
@@ -94,7 +100,7 @@ Template::Engine - Super simple and HTML-friendly templating engine.
 	foo => 'bar'
   );
 
-=head1 USAGE
+=head1 DESCRIPTION
 
 TODO: Describe how to use the template language and how each method is defined.
 
@@ -106,8 +112,12 @@ TODO: Describe how to use the template language and how each method is defined.
 
 Initializes a new template object using the template text provided by
 I<raw> or a file path relative to the I<template/> directory in the root of
-project provided via I<file>. This templatecan be used to generate several
-different outputs depending on the parameters passed to I<$template>->C<run>().
+project, or a directory provided by the I<config> object, provided via I<file>.
+This templatecan be used to generate several different outputs depending on the
+parameters passed to I<$template>->C<run>().
+
+You can also provide a C<Config::Tiny> object with the default configuration as
+I<config>.
 
 =item I<$output> = I<$template>->C<run>(I<%vars>)
 
