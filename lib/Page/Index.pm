@@ -33,13 +33,11 @@ sub new {
 sub build {
 	my ($self, @articles) = @_;
 
-	# TODO: Get the latest articles and put them in the page.
-
 	# Render the page.
 	$self->{_page}->render(
 		"blog.title" => $self->{_config}->{blog}->{title},
 		"blog.subtitle" => $self->{_config}->{blog}->{title},
-		"article.main" => $articles[0]->render()
+		"articles" => $self->_build_post_list(@articles)
 	);
 }
 
@@ -50,17 +48,34 @@ sub render {
 	# Create a page object.
 	my $page = $self->new($params{config});
 
+	# TODO: Get the latest articles and put them in the page.
+
 	# Work with the articles.
 	my @articles;
-	for my $article (@{$params{articles}}) {
-		push @articles, Page::Object::Article->new(config => $params{config},
-			file => $article);
+	for my $file (@{$params{articles}}) {
+		my $article = Page::Object::Article->new(
+			config => $page->{_config},
+			file => $file);
+		push @articles, $article;
 	}
 
 	# Build the page.
 	$page->build(@articles);
 
 	return $page;
+}
+
+# Builds the post list in the index page.
+sub _build_post_list {
+	my ($self, @articles) = @_;
+	my $output = "";
+
+	# Loop through the articles and render them.
+	for my $article (@articles) {
+		$output .= $article->render();
+	}
+
+	return $output;
 }
 
 1;

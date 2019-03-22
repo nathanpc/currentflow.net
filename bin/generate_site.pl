@@ -5,6 +5,7 @@ use warnings;
 use autodie;
 
 use Config::Tiny;
+use File::Basename;
 
 # Include the project module directory.
 use FindBin;
@@ -16,9 +17,15 @@ use Page::Index;
 # Open the config file.
 my $config = Config::Tiny->read('config/levissimo.conf');
 
+# Get posts from directory.
+my @posts = glob($config->{folders}->{posts} . "/*.html");
+@posts = map { basename($_) } @posts;        # Get only basename from files.
+@posts = sort { lc($b) cmp lc($a) } @posts;  # Sort posts from newer to older.
+
+
 # Generate pages.
 Page::Index->render(
 	config => $config,
-	articles => [ '2019-03-20_Power12_The_Mini6_Again_But_Better.html' ]
+	articles => \@posts
 );
 
