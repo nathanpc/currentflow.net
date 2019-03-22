@@ -42,6 +42,11 @@ C<site/> - The output folder where your finalized website should reside.
 To make sure everything is perfect for deployment you can run C<make test>,
 which will run all the unit tests to make sure that you have a working system.
 
+=head1 LICENSE
+
+This project is licensed under the MIT license. For more information please read
+the I<LICENSE> file in the project root.
+
 =head1 AUTHOR
 
 Nathan Campos <nathanpc@dreamintech.net>
