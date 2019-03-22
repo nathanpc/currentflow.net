@@ -143,3 +143,9 @@ footer > p {
 	}
 }
 
+/* Fix prism.js font. */
+code[class*=language-], pre[class*=language-] {
+	font-size: 16px;
+	line-height: 1.3em;
+}
+
