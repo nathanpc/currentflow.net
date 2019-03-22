@@ -36,7 +36,7 @@ sub build {
 	# Render the page.
 	$self->{_page}->render(
 		"blog.title" => $self->{_config}->{blog}->{title},
-		"blog.subtitle" => $self->{_config}->{blog}->{title},
+		"blog.subtitle" => $self->{_config}->{blog}->{subtitle},
 		"articles" => $self->_build_post_list(@articles)
 	);
 }
