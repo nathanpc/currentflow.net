@@ -13,24 +13,33 @@ use lib File::Spec->catdir($FindBin::Bin, '..', 'lib');
 
 use Template::Engine;
 use Page::Object::Article;
+use Page::Base;
 
 # Read index page template.
 my $fn_in = "index.html";
-print "[LOG] Reading template from $fn_in\n";
+#print "[LOG] Reading template from $fn_in\n";
 my $template = Template::Engine->new(file => $fn_in);
 
 # Create an article.
 my $article = Page::Object::Article->new('2019-03-20_Power12_The_Mini6_Again_But_Better.html');
 
-# Write the page to the output file.
-my $fn_out = File::Spec->rel2abs("site/index.html");
-print "[LOG] Opening output file: $fn_out\n";
-open(my $out, '>:encoding(UTF-8)', $fn_out);
-print $out $template->run(
+# Create a page.
+my $page = Page::Base->new("config", $template, 'index.html');
+$page->render(
 	"blog.title" => "Levissimo Blog",
 	"blog.subtitle" => "A blog about everything related to the project",
 	"article.main" => $article->render()
 );
-close($out);
-print "[LOG] Finished writing the index.html file\n";
+
+# Write the page to the output file.
+#my $fn_out = File::Spec->rel2abs("site/index.html");
+#print "[LOG] Opening output file: $fn_out\n";
+#open(my $out, '>:encoding(UTF-8)', $fn_out);
+#print $out $template->run(
+#	"blog.title" => "Levissimo Blog",
+#	"blog.subtitle" => "A blog about everything related to the project",
+#	"article.main" => $article->render()
+#);
+#close($out);
+#print "[LOG] Finished writing the index.html file\n";
 
