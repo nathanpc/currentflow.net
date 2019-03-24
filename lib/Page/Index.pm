@@ -6,6 +6,8 @@ use strict;
 use warnings;
 use autodie;
 
+use Term::ANSIColor;
+
 use Page::Base;
 use Template::Engine;
 use Page::Object::Article;
@@ -28,13 +30,21 @@ sub new {
 
 	# Create a new base page according to the page number.
 	if ($page_num == 0) {
-		print "[LOG] Generating index page: index.html\n";
+		print " index.html ";
 		$self->{_page} = Page::Base->new($config, $template, 'index.html');
 	} elsif ($page_num > 0) {
 		my $num = $page_num + 1;  # More human-friendly page representation.
 		my $page_name = "page/$num.html";
 
-		print "[LOG] Generating index page: $page_name\n";
+		# Print directory change if is the first new page.
+		if ($page_num == 1) {
+			print colored(" page/", 'cyan') . "\n";
+
+			# Cheating a bit... Let's just assume that the index page was OK.
+			print "   1.html " . colored('OK', 'green') . "\n";
+		}
+
+		print "   $num.html ";
 		$self->{_page} = Page::Base->new($config, $template, $page_name);
 	}
 
@@ -63,6 +73,9 @@ sub build {
 		"page.articles" => _build_post_list(@articles),
 		"page.pager" => $self->_generate_pager()
 	);
+
+	# Show that everything went fine.
+	print colored('OK', 'green') . "\n";
 }
 
 # Create a new page, built it, and output all in one go.

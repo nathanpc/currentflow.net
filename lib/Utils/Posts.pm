@@ -7,6 +7,7 @@ use warnings;
 use autodie;
 
 use File::Basename;
+use Term::ANSIColor;
 
 use Page::Post;
 
@@ -26,6 +27,10 @@ sub get_filenames {
 sub create_pages {
 	my ($config, @posts) = @_;
 
+	# Show the process.
+	print colored(' post/', 'cyan') . "\n";
+
+	# Iterate over posts and create files.
 	for my $post (@posts) {
 		Page::Post->render(config => $config, file => $post);
 	}

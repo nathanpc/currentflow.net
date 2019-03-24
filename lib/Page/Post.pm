@@ -6,6 +6,8 @@ use strict;
 use warnings;
 use autodie;
 
+use Term::ANSIColor;
+
 use Page::Base;
 use Template::Engine;
 use Page::Object::Article;
@@ -29,7 +31,7 @@ sub new {
 	my $fn = 'post/' . $self->{article}->url_slug . '.html';
 
 	# Create base page object.
-	print "[LOG] Generating post page: $fn\n";
+	print "   " . $self->{article}->url_slug . ".html ";
 	$self->{_page} = Page::Base->new($config, $template, $fn);
 
 	bless $self, $class;
@@ -48,6 +50,9 @@ sub build {
 		"page.articles" => $self->{article}->render(),
 		"page.pager" => ''
 	);
+
+	# Show that everything went fine.
+	print colored('OK', 'green') . "\n";
 }
 
 # Create a new page, built it, and output all in one go.
