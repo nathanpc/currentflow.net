@@ -23,7 +23,7 @@ sub new {
 	# Generate the page template.
 	my $template = Template::Engine->new(
 		config => $config,
-		file => 'index.html'
+		file => 'page.html'
 	);
 
 	# Create a new base page according to the page number.

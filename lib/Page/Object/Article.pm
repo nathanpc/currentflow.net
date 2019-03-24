@@ -31,7 +31,12 @@ sub new {
 			config => $params{config})
 	};
 
+	# Bless the reference.
 	bless $self, $class;
+
+	# Parse the article.
+	$self->_parse_file();
+
 	return $self;
 }
 
@@ -39,11 +44,6 @@ sub new {
 sub render {
 	my ($self) = @_;
 	my $output = "";
-
-	# If the article file hasn't been parsed yet, parse it.
-	if (not defined $self->{tags}) {
-		$self->_parse_file();
-	}
 
 	# Generate the output with the article template.
 	$output = $self->{_template}->run(
@@ -54,6 +54,18 @@ sub render {
 	);
 
 	return $output;
+}
+
+# Get a URL slug for the post.
+sub url_slug {
+	my ($self) = @_;
+	my $slug = join(' ', $self->{date}, $self->{title});
+
+	# Create the slug.
+	$slug =~ s/[^\w\d\-_]/\-/g;  # Substitute everything illegal for dashes.
+	$slug =~ s/\-+/\-/g;         # Remove duplicate dashes.
+
+	return $slug;
 }
 
 # Parses an article file and populates the class.
@@ -139,11 +151,14 @@ Page::Object::Article - A simple object representing a article.
   # Create article object.
   my $article = Page::Object::Article->new(
     config => $config,
-	file => 'some_post.html'
+    file => 'some_post.html'
   );
 
   # Get the article output.
   my $output = $article->render();
+
+  # Get a URL slug for the article.
+  my $slug = $article->url_slug;
 
 =head1 METHODS
 
@@ -159,6 +174,10 @@ I<config>.
 
 Runs the parser through the post file and generates a output according to the
 default article template.
+
+=item I<$slug> = I<$article>->C<url_slug>
+
+Returns a URL slug representation of the article.
 
 =back
 

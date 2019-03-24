@@ -8,6 +8,8 @@ use autodie;
 
 use File::Basename;
 
+use Page::Post;
+
 # Get the post filenames sorted by date.
 sub get_filenames {
 	my ($config) = @_;
@@ -18,6 +20,15 @@ sub get_filenames {
 	@posts = sort { lc($b) cmp lc($a) } @posts;  # Sort posts from newer to older.
 
 	return @posts;
+}
+
+# Create all of the post pages.
+sub create_pages {
+	my ($config, @posts) = @_;
+
+	for my $post (@posts) {
+		Page::Post->render(config => $config, file => $post);
+	}
 }
 
 1;

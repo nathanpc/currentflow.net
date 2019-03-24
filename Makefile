@@ -6,6 +6,7 @@
 all: clean
 	mkdir site/
 	mkdir site/page/
+	mkdir site/post/
 	./bin/generate_site.pl
 	cp site/index.html site/page/1.html
 	cp -r static/* site/

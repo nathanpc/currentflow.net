@@ -18,9 +18,12 @@ use Utils::Index;
 # Open the config file.
 my $config = Config::Tiny->read('config/levissimo.conf');
 
-# Get posts from directory.
+# Get posts from deafult directory.
 my @posts = Utils::Posts::get_filenames($config);
 
 # Generate index pages.
 Utils::Index::create_pages($config, @posts);
+
+# Create a post pages.
+Utils::Posts::create_pages($config, @posts);
 
