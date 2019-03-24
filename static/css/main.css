@@ -114,6 +114,7 @@ article > .article-body img {
 
 .pager a:hover {
 	color: white;
+	transition: color 0.8s;
 }
 	
 footer > p {
