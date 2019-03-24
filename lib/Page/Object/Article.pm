@@ -18,6 +18,7 @@ use Template::Engine;
 sub new {
 	my ($class, %params) = @_;
 	my $self = {
+		url => undef,
 		title => undef,
 		author => undef,
 		date => undef,
@@ -36,6 +37,8 @@ sub new {
 
 	# Parse the article.
 	$self->_parse_file();
+	$self->{url} = $self->{_config}->{server}->{path} . 'post/' .
+		$self->url_slug . '.html';
 
 	return $self;
 }
@@ -47,6 +50,7 @@ sub render {
 
 	# Generate the output with the article template.
 	$output = $self->{_template}->run(
+		"article.url" => $self->{url},
 		"article.title" => $self->{title},
 		"article.author" => $self->{author},
 		"article.date" => $self->_get_date_str(),
