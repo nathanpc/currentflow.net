@@ -12,16 +12,14 @@ use FindBin;
 use File::Spec;
 use lib File::Spec->catdir($FindBin::Bin, '..', 'lib');
 
+use Utils::Posts;
 use Page::Index;
 
 # Open the config file.
 my $config = Config::Tiny->read('config/levissimo.conf');
 
 # Get posts from directory.
-my @posts = glob($config->{folders}->{posts} . "/*.html");
-@posts = map { basename($_) } @posts;        # Get only basename from files.
-@posts = sort { lc($b) cmp lc($a) } @posts;  # Sort posts from newer to older.
-
+my @posts = Utils::Posts::get_filenames($config);
 
 # Generate pages.
 Page::Index->render(
