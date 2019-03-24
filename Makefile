@@ -8,6 +8,7 @@ all: clean
 	@./bin/generate_site.pl
 	@cp site/index.html site/page/1.html
 	@./bin/copy_static.sh
+	@./bin/finished.sh
 
 clean:
 	@-rm -r site/
