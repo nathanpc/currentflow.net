@@ -10,6 +10,7 @@ use Carp;
 use File::Spec;
 use File::Slurp;
 use Term::ANSIColor;
+use Time::Piece;
 
 use Template::Engine;
 
@@ -48,7 +49,7 @@ sub render {
 	$output = $self->{_template}->run(
 		"article.title" => $self->{title},
 		"article.author" => $self->{author},
-		"article.date" => $self->{date},
+		"article.date" => $self->_get_date_str(),
 		"article.body" => $self->{body}
 	);
 
@@ -105,6 +106,21 @@ sub _check_required_params {
 	if ($fail) {
 		confess '[', colored('ERROR', 'red'), "] Required parameters were not present";
 	}
+}
+
+# Get a human-friendly date string.
+sub _get_date_str {
+	my ($self) = @_;
+	my $dt = Time::Piece->strptime($self->{date}, "%Y-%m-%d");
+
+	# Override Time::Piece names with english so that it is locale agnostic.
+	my @days = qw(Sun Mon Tue Wed Thu Fri Sat);
+	my @months = qw(January February March April May June July August September
+		October November December);
+	Time::Piece::day_list(@days);
+	Time::Piece::mon_list(@months);
+
+	return join(' ', $dt->wdayname, $dt->mday, $dt->monname, $dt->year);
 }
 
 1;
@@ -164,6 +180,10 @@ I<$article>, and returns them in the form of a hash.
 Checks if all the required tags are present in the hash reference I<$tags>.
 
 Required parameters: I<title>, I<author>, I<created>.
+
+=item I<$date_str> = I<$self>->C<_get_date_str>()
+
+Returns a more human-friendly version of the article date.
 
 =back
 
