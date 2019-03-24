@@ -115,6 +115,20 @@ __END__
 
 Page::Object::Article - A simple object representing a article.
 
+=head1 SYNOPSIS
+
+  # Get a default configuration.
+  my $config = Config::Tiny->read('levissimo.conf');
+
+  # Create article object.
+  my $article = Page::Object::Article->new(
+    config => $config,
+	file => 'some_post.html'
+  );
+
+  # Get the article output.
+  my $output = $article->render();
+
 =head1 METHODS
 
 =over 4
