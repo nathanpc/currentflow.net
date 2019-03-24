@@ -84,12 +84,15 @@ Template::Engine - Super simple and HTML-friendly templating engine.
 
 =head1 SYNOPSIS
 
+  # Create a default configuration.
+  my $config = Config::Tiny->read('levissimo.conf');
+
   # Optionally get the template from a file.
   my $raw_text = Template::Engine->read_template('test.html');
   
   # Create a new template instance.
-  my $template = Template::Engine->new(raw => $raw_text);
-  $template = Template::Engine->new(file => 'test.html');
+  my $template = Template::Engine->new(config => $config, raw => $raw_text);
+  $template = Template::Engine->new(config => $config, file => 'test.html');
   
   # Get generated text without passing any variables.
   my $final_text = $template->run();

@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
+package Utils::Posts;
+
 use strict;
 use warnings;
 use autodie;
-
-package Utils::Posts;
 
 use File::Basename;
 

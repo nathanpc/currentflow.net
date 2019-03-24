@@ -110,13 +110,22 @@ article > .article-body img {
 
 	box-shadow: none;
 	background: rgb(255, 214, 95);
+
+	transition: color 0.8s;
 }
 
 .pager a:hover {
 	color: white;
-	transition: color 0.8s;
 }
-	
+
+.pager a.current {
+	color: white;
+}
+
+.pager a.current:hover {
+	color: #454545;
+}
+
 footer > p {
 	text-align: center;
 }
