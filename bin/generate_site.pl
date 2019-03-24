@@ -13,7 +13,7 @@ use File::Spec;
 use lib File::Spec->catdir($FindBin::Bin, '..', 'lib');
 
 use Utils::Posts;
-use Page::Index;
+use Utils::Index;
 
 # Open the config file.
 my $config = Config::Tiny->read('config/levissimo.conf');
@@ -21,9 +21,6 @@ my $config = Config::Tiny->read('config/levissimo.conf');
 # Get posts from directory.
 my @posts = Utils::Posts::get_filenames($config);
 
-# Generate pages.
-Page::Index->render(
-	config => $config,
-	articles => \@posts
-);
+# Generate index pages.
+Utils::Index::create_pages($config, @posts);
 

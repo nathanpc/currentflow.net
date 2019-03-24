@@ -5,6 +5,7 @@
 
 all: clean
 	mkdir site/
+	mkdir site/page/
 	./bin/generate_site.pl
 	cp -r static/* site/
 

@@ -146,7 +146,7 @@ default article template.
 
 =back
 
-=head1 PRIVATE
+=head1 PRIVATE METHODS
 
 =over 4
 

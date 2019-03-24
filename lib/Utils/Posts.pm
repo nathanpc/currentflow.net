@@ -6,7 +6,6 @@ use autodie;
 
 package Utils::Posts;
 
-use Config::Tiny;
 use File::Basename;
 
 # Get the post filenames sorted by date.
