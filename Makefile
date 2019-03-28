@@ -3,15 +3,17 @@
 #
 # Author: Nathan Campos <nathan@innoveworkshop.com>
 
+OUTFOLDER = $(shell ./bin/get_output_path.pl)
+
 all: clean
 	@./bin/make_folders.sh
 	@./bin/generate_site.pl
-	@cp site/index.html site/page/1.html
+	@cp $(OUTFOLDER)/index.html $(OUTFOLDER)/page/1.html
 	@./bin/copy_static.sh
 	@./bin/finished.sh
 
 clean:
-	@-rm -r site/
+	@-rm -r $(OUTFOLDER)
 
 test:
 	prove -lvcf

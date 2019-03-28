@@ -7,7 +7,7 @@
 ### Author: Nathan Campos <nathanpc@dreamintech.net>
 
 infolder="static"
-outfolder="site"
+outfolder=$(./bin/get_output_path.pl noslash)
 
 echo -e "\e[34mCopying static files...\e[0m"
 

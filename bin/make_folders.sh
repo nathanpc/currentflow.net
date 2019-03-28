@@ -11,15 +11,16 @@ function ok {
 
 echo -e "\e[34mCreating output folders...\e[0m"
 
-echo -n " site/"
-mkdir site/
+outfolder=$(./bin/get_output_path.pl)
+echo -n " $outfolder"
+mkdir $outfolder
 ok
 
 echo -n "   page/"
-mkdir site/page/
+mkdir $outfolder/page/
 ok
 
 echo -n "   post/"
-mkdir site/post/
+mkdir $outfolder/post/
 ok
 
