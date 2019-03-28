@@ -20,10 +20,13 @@ to generate a blog, without silly things like Markdown with a front-matter.
 Posts are written with plain HTML, just like the rest of the website layout, and
 the additional parameters are specified using standardized C<meta> tags.
 
+The default output folder is set to I<docs>, this way it can be easily deployed
+to GitHub Pages.
+
 =head1 SYNOPSIS
 
 Just run C<make> and the script will generate all the necessary files for
-deploying the website in the I<site> folder.
+deploying the website in the I<docs> folder.
 
 =head1 FOLDERS
 
@@ -35,7 +38,7 @@ copied as-is with its structure preserved to the output folder.
 C<template/> - Where all the important website templates for things like page
 layout and etc should be.
 C<posts/> - Where you should place your posts.
-C<site/> - The output folder where your finalized website should reside.
+C<docs/> - The output folder where your finalized website should reside.
 
 =head1 TESTING
 
