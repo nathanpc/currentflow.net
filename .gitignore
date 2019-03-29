@@ -1,6 +1,6 @@
 # Generated files.
 site/
-docs/
+#docs/
 
 # Perl Misc.
 !Build/
