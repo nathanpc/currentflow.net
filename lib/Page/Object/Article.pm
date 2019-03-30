@@ -97,7 +97,7 @@ sub _parse_meta_tags {
 	# Yes, I know parsing HTML with regular expressions is bad, but I don't
 	# think we need to parse the whole thing with a proper HTML parser just to
 	# get a couple of <meta> tags.
-	while ($article =~ /^<\s?meta\s+name=["'](?<name>[\w\d\.\-:_]+)["']\s+content=["'](?<content>[^"']+)["']\s?>\s?$/gm) {
+	while ($article =~ /^<\s?meta\s+name="(?<name>[\w\d\.\-:_']+)"\s+content="(?<content>[^"]+)"\s?>\s?$/gm) {
 		$tags{$+{name}} = $+{content};
 	}
 
