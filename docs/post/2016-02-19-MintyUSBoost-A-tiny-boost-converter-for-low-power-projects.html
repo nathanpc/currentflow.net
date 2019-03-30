@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous" />
+
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+
+
+	</head>
+
+	<body>
+		<!--[if IE]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+		<![endif]-->
+
+		<!-- Header -->
+		<header>
+			<div class="title-block">
+	<h1><a href="/currentflow.net/">Current Flow</a></h1>
+	<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+
+<!-- Navigation Bar -->
+<nav>
+	<ul>
+		<li><a href="/currentflow.net/">Home</a></li>
+		<li><a href="https://nathancampos.me/">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+</nav>
+
+
+		</header>
+
+		<!-- Articles -->
+		<div class="article-container">
+			<hr>
+			<article>
+	<h2><a href="/currentflow.net/post/2016-02-19-MintyUSBoost-A-tiny-boost-converter-for-low-power-projects.html">MintyUSBoost: A tiny boost converter for low power projects</a></h2>
+	<nav>Nathan Campos - Fri 19 February 2016</nav>
+
+	<div class="article-body"><meta name="title" content="MintyUSBoost: A tiny boost converter for low power projects">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2016-02-19">
+
+<p><a href="http://i.imgur.com/o7x3ixk.jpg" target="_blank"><img alt="The MintyUSBoost in its fitting enclosure" src="http://i.imgur.com/o7x3ixk.jpg?1" /></a></p>
+
+<p>First of all a bit of a back story: This is my first attempt at a DC-DC converter, I&rsquo;ve always thought they were magic black-boxes that you just had to accept and building one yourself without a dedicated chip was something extremely difficult, something that could only be done with some high-speed complex analog circuitry or high-speed microcontrollers. I think a lot of people think the same way and I decided to try out my luck and it worked fine, switchmode converters are not black magic (now only RF is black magic), and I hope I dismistify them for you too in this article.</p>
+
+<p>The idea for this project came because I built a nice portable Class-A headphone amplifier (blog post coming in the future) and I wanted a simple power supply for it when I was using it with my computer, so I had to step the 5V from the USB to the 9V required by the amplifier circuit, the amplifier even though it&rsquo;s Class-A has a low current consumption, so the 2.5W from a normal USB was more than enough. Taking into consideration all this I needed a boost converter with the following specs:<ul><li>5V input at 450mA maximum to work with any USB port<li>9V output able to source up to 110mA (more than enough for my amp)<li>Acceptable voltage ripple and noise since this will be used with pre-amps and the headphone amp</ul></p>
+
+<p class="image-container"><img alt="Schematic of Rev A" src="http://i.imgur.com/erlyHAr.png" /></p>
+
+<p>As you can see there&rsquo;s not a lot happening, and that&rsquo;s the beauty of this design, since it was made for low power projects it doesn&rsquo;t require any of the complexities, it was designed to be minimalistic and easy to build for someone that is new to switchmode converters. The entire feedback control loop is contained inside the PIC12F683 microcontroller, it is a pretty tiny and under-powered micro, but as you will see it works perfectly for this task.</p>
+
+<p>First the power input goes through a 3.3V regulator which provides power to the PIC and also acts as a voltage reference, then the microcontroller takes control of things and starts the PWM, pulsing current through the main inductor L1 while sensing the output voltage, if the voltage is lower than the set voltage it increases the PWM duty cycle, if the voltage is higher than the set voltage it decreases the PWM duty cycle, and that&rsquo;s all you need to create a simple switchmode converter. Here&rsquo;s the code that runs the whole thing (I still need to improve it, so changes are coming):</p>
+
+<p>If you&rsquo;re a bit more experienced with DC-DC converters you&rsquo;ll notice that the components used are a bit overkill, but that&rsquo;s by design because I wanted very low ripple at the output, also in the topic of components, I selected a IRL520 MOSFET and this is very important, since I&rsquo;m driving the gate with very low voltages a logic-level MOSFET is a must, if you want to use a regular MOSFET you&rsquo;ll have to increase the gate voltage using a <a href="http://electronics.stackexchange.com/q/91897" target="_blank">technique shown here</a>.</p>
+
+<p>A very handy tool for everyone designing their own DC-DC converters is <a href="https://learn.adafruit.com/diy-boost-calc/the-calculator" target="_blank">Adafruit&rsquo;s DIY DC-DC Boost Calculator</a>, it was extremely useful to choose the components used in this project and it&rsquo;ll surely help you in yours too. I&rsquo;ve also written a <a href="https://github.com/nathanpc/statistics-playground/blob/master/boost_calc.R" target="_blank">R script</a> to have a offline version of the calculator, it&rsquo;ll be improved in the future, but it&rsquo;s usable right now.</p>
+
+<p>The only issue that I&rsquo;m having with this project so far is the fact that no matter what I try, I can&rsquo;t get the crystal to oscillate, I checked everything, set all the registers correctly and I still can&rsquo;t get it to work, if anyone wants to help it&rsquo;ll be greatly appreciated.</p>
+
+<p class="image-container"><img alt="Noise Figures" src="http://i.imgur.com/Hzm08DQ.png" /></p>
+
+<p>Since all my designs have a lot of local decoupling to keep any noise or ripple from the power source away from sensitive parts I didn&rsquo;t care too much about having extremely low ripple/noise, but if you want to upgrade this you can add a small shunt regulator to really kill any ripple or just add a LC filter to the output.</p>
+
+<p>If you&rsquo;ve got any questions feel free to ask and I&rsquo;m open to suggestions for improvement. </p>
+
+</div>
+</article>
+
+<hr>
+
+
+		</div>
+
+		<!-- Pager -->
+		
+
+		<!-- Page footer -->
+		<footer>
+			<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+
+
+		</footer>
+	</body>
+</html>
+

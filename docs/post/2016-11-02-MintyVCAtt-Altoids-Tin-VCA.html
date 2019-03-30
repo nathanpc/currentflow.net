@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous" />
+
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+
+
+	</head>
+
+	<body>
+		<!--[if IE]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+		<![endif]-->
+
+		<!-- Header -->
+		<header>
+			<div class="title-block">
+	<h1><a href="/currentflow.net/">Current Flow</a></h1>
+	<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+
+<!-- Navigation Bar -->
+<nav>
+	<ul>
+		<li><a href="/currentflow.net/">Home</a></li>
+		<li><a href="https://nathancampos.me/">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+</nav>
+
+
+		</header>
+
+		<!-- Articles -->
+		<div class="article-container">
+			<hr>
+			<article>
+	<h2><a href="/currentflow.net/post/2016-11-02-MintyVCAtt-Altoids-Tin-VCA.html">MintyVCAtt - Altoids Tin VCA</a></h2>
+	<nav>Nathan Campos - Wed 2 November 2016</nav>
+
+	<div class="article-body"><meta name="title" content="MintyVCAtt - Altoids Tin VCA">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2016-11-02">
+
+<p>For the last couple of months I&rsquo;ve been pretty hooked into audio projects, specially music creation related. This was the first quick project I&rsquo;ve built to hopefully end up with a semi-modular synthesizer in a very distant future. The main idea is to basically build a bunch of the simple building blocks of a modular synth in the worst way possible, using Altoids tins and project boxes instead of a rack, which will make patching a real nightmare, but I&rsquo;m sure will look even messier than a rack modular synth.</p>
+
+<p class="image-container"><img alt="The final project" src="http://i.imgur.com/9nQCzpC.jpg" /></p>
+
+<p>The project turned up rather well, it was designed to be extremely simple and easy to build, and had to fit inside the tin with the 9V battery and the connectors, this lead to some restrictions in the size of the circuit (compromises).</p>
+
+<p class="image-container"><img alt="Schematic" src="http://i.imgur.com/gd4ayGG.jpg" /></p>
+
+<p>As you can clearly see the circuit is extremely simple, but gets the job done quite well. I&rsquo;ve used the simplest method of voltage controlled attenuation, the LED coupled with a LDR, this gives it very low distortion, but a very slow attack speed compared to <a href="http://sound.whsites.net/articles/vca-techniques.html" target="_blank">other designs</a>. The circuit accepts a 0-3V CV signal which controls the current thought the LED, so more CV means the input signal will be attenuated!</p>
+
+<p>You can also notice something weird in the CV input jack, that&rsquo;s a very handy trick to incorporate a power switch into a project, I learned this method from DIY stompboxes around the internet. The idea is that you connect your power negative to the ring (right channel) of a stereo jack, so that when you connect a mono plug into the socket, the ring and sleeve will be shorted out, connecting your power negative to your circuit&rsquo;s ground.</p>
+
+<p class="image-container"><img alt="Close-up of the circuit" src="http://i.imgur.com/n1wR8IP.jpg" /></p>
+
+<p>The circuit is pretty simple and was made as a quick hack to do some audio experiments, but feel free to play around with it, and feedback is always welcome! </p>
+
+</div>
+</article>
+
+<hr>
+
+
+		</div>
+
+		<!-- Pager -->
+		
+
+		<!-- Page footer -->
+		<footer>
+			<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+
+
+		</footer>
+	</body>
+</html>
+

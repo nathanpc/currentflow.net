@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous" />
+
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+
+
+	</head>
+
+	<body>
+		<!--[if IE]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+		<![endif]-->
+
+		<!-- Header -->
+		<header>
+			<div class="title-block">
+	<h1><a href="/currentflow.net/">Current Flow</a></h1>
+	<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+
+<!-- Navigation Bar -->
+<nav>
+	<ul>
+		<li><a href="/currentflow.net/">Home</a></li>
+		<li><a href="https://nathancampos.me/">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+</nav>
+
+
+		</header>
+
+		<!-- Articles -->
+		<div class="article-container">
+			<hr>
+			<article>
+	<h2><a href="/currentflow.net/post/2014-04-07-Using-a-HPC-on-a-Daily-Basis.html">Using a HPC on a Daily Basis</a></h2>
+	<nav>Nathan Campos - Mon 7 April 2014</nav>
+
+	<div class="article-body"><meta name="title" content="Using a HPC on a Daily Basis">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2014-04-07">
+
+<p>Recently I&rsquo;ve started using my <a href="http://www.hpcfactor.com/reviews/hardware/hp/jornada720/" target="_blank">Jornada 720</a> as a replacement for my iPad as a lab computer since it&rsquo;s extremely tiny (space is very important in the bench) and can do practically everything I need my iPad for, of course I still have my main computer in the lab to program microcontrollers and do everything, but the Jornada is great to have near my working area so I can quickly check datasheets, schematics, and parts list while soldering or prototyping.</p>
+
+<p><a href="http://imgur.com/aBx9Idl" target="_blank"><img alt="Lab view" src="http://i.imgur.com/aBx9Idll.jpg" /></a></p>
+
+<p>Usually when I&rsquo;m prototyping or testing a board I have to check datasheets for pinouts, common voltages, etc. and Adobe Reader is great for this task:</p>
+
+<p class="image-container"><img alt="Datasheet open" src="http://i.imgur.com/FJFg7GG.png" /></p>
+
+<p>In my main computer I keep a very well organized folder (and database, but I&rsquo;m still researching the best way to get the DB into my j720 and keep them both synced) with datasheets for practically every electronic component I have in stock. So whenever I update the folder with more stuff I just <a href="http://rsync.samba.org/" target="_blank">rsync</a> everything to my Jornada, and since it&rsquo;s a nice Linux machine I&rsquo;ve already wrote a nice script to automate things.</p>
+
+<p class="image-container"><img alt="Datasheets" src="http://i.imgur.com/1Q0amP2.png" /></p>
+
+<p class="image-container"><img alt="Folders" src="http://i.imgur.com/kDMv7l8.png" /></p>
+
+<p>Last, but certainly not least, I&rsquo;ve built a small command line application a while ago called <a href="https://github.com/nathanpc/build-bom" target="_blank">build-bom</a> which gets a schematic file from my CAD program (<a href="http://www.cadsoftusa.com/" target="_blank">EAGLE</a>) and can output the parts list into HTML, CSV, or JSON. So whenever I&rsquo;m populating a board I export the parts list to HTML and open it in my Jornada so I can know which part to place where in the board:</p>
+
+<p class="image-container"><img alt="Parts list" src="http://i.imgur.com/okLmeaA.png" /> </p>
+
+</div>
+</article>
+
+<hr>
+
+<article>
+	<h2><a href="/currentflow.net/post/2013-11-01-Logitech-Wireless-Anywhere-MX.html">Logitech Wireless Anywhere MX</a></h2>
+	<nav>Nathan Campos - Fri 1 November 2013</nav>
+
+	<div class="article-body"><meta name="title" content="Logitech Wireless Anywhere MX">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2013-11-01">
+
+<p>Recently I was looking for a new mouse to replace my <a href="http://www.apple.com/magicmouse/" target="_blank">Apple Magic Mouse</a> since for some crazy reason it just doesn&rsquo;t want to work on my <a href="https://www.system76.com/laptops/model/bonx7" target="_blank">System76 Bonobo Extreme</a> (I went back to Linux), despite the fact that almost every person on the internet says it does. After searching for a while (2 months) I thought the best option was the <a href="http://www.amazon.com/gp/product/B0082D5660/" target="_blank">Logitech Wireless Anywhere Mouse MX</a>, so I ordered one.</p>
+
+<p>I&rsquo;ve been using it for 3 days now and I gotta say, it&rsquo;s a perfect mouse, the weight is great (about the same as the Magic Mouse), the scrolling wheel is ok, and it has two customizable buttons (I use them to change tabs in my text editor while I&rsquo;m coding), the only complaint that I have is the fact that Logitech took a huge effort to come up with the most obnoxious name they could come up with for a mouse.</p>
+
+<p>Some people may hate the fact that it doesn&rsquo;t use Bluetooth, which means you have to carry that little USB receiver with it, but the good thing is that there is place to put it in the battery compartment so you won&rsquo;t loose it, personally I don&rsquo;t care about wireless mouses that use the separate receiver.</p>
+
+<p>Another great thing about it: It comes with a nice pouch to carry it in your backpack and protect it from scratches.</p>
+
+<p>In a nutshell, it&rsquo;s a great mouse and if you&rsquo;re looking for one you should definitely take it into consideration. </p>
+
+</div>
+</article>
+
+<hr>
+
+<article>
+	<h2><a href="/currentflow.net/post/2013-03-11-The-New-Wave-of-Vaporware.html">The New Wave of Vaporware</a></h2>
+	<nav>Nathan Campos - Mon 11 March 2013</nav>
+
+	<div class="article-body"><meta name="title" content="The New Wave of Vaporware">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2013-03-11">
+
+<p>Last week I got a new development device, a Galaxy Nexus, mainly for Android development since I bricked my old Galaxy S. Sooner or later I would try to install my favorite alpha mobile OS: Firefox OS. I really wanted to try Firefox OS because of how they want HTML5 to be the primary (and unique) way to build applications, but since I <strong>NEVER</strong> run anything on emulators, I was waiting until I had a device that was compatible.</p>
+
+<p>So I went to <a href="https://developer.mozilla.org/en/docs/Mozilla/Firefox_OS" target="_blank">their docs</a> to get started on how to flash their OS into my Galaxy Nexus. The first thing that I see is that they don&rsquo;t provide binaries, that&rsquo;s not good, but I can compile it myself, no big deal. So I started following their <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Building_and_installing_Firefox_OS" target="_blank">Building/Installation entries</a>, installed all the prerequisites, pulled the code from their repo and ran the configure command to prepare the repo. Then I realized it was downloading the Android source code, which is fucking huge and takes an eternity to download, at this point I realized things weren&rsquo;t going to be good.</p>
+
+<p>For some reason they weren&rsquo;t using Google&rsquo;s servers to get Android&rsquo;s code, but instead the shitty Linaro ones, I was getting a extremely unreliable, 60kb/s download, it was a hell. After <strong>4 hours</strong> trying to get all the code it started failing bad and then it wouldn&rsquo;t download the rest anymore, so I went to their IRC channel hoping to get some help, but couldn&rsquo;t get much of it, but what was interesting from the conversation in the IRC is that their primary development target isn&rsquo;t phones, but the shitty emulator.</p>
+
+<p>I can rant about emulator and all that crap for days here, but I prefer not to. So, dear Mozilla, if you want developers to really care about the awesome product that you&rsquo;re building, you should first give us a fast and easy way to install it on our devices.</p>
+
+<p>If you look closer at all these 5th place mobile OSes (Ubuntu Touch, Firefox OS, and Tizen) you&rsquo;ll realize one major thing: It looks like they&rsquo;ll never ship (yeah Tizen, you&rsquo;re the worst at the time), they just appear to be a bunch of vaporware.</p>
+
+<p>I really love to see all these emerging technologies and have fun with development stuff, but if I can&rsquo;t install it, I&rsquo;ll just loose my interest and never look back. I think I&rsquo;ll never try Firefox OS again, it was a great experiment, but if you focus on crap emulators I won&rsquo;t support your platform. </p>
+
+</div>
+</article>
+
+<hr>
+
+<article>
+	<h2><a href="/currentflow.net/post/2013-01-20-The-Google-Tax.html">The Google Tax</a></h2>
+	<nav>Nathan Campos - Sun 20 January 2013</nav>
+
+	<div class="article-body"><meta name="title" content="The Google Tax">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2013-01-20">
+
+<p>Two days ago I came across this: <a href="http://www.google.com/hostednews/afp/article/ALeqM5ipkAQJJNgj69HxLbKppH80WjUQJg" target="_blank">Orange &lsquo;forces Google&rsquo; to pay for mobile traffic</a>. Clearly Orange has no idea how the internet works and what&rsquo;s their involvement in it. The ISP is just a dumb pipe to connect the user to a server, nothing more. If their users are using too much bandwidth and the costs are higher than the profits they should start to rethink the price of their service, not go after Google saying that they are evil for transferring all that data.</p>
+
+<p>We should also mention that if Orange, and other ISPs, start to rethink their service costs they should never throttle the connection. The user fees should be equivalent to their connection speed, not their usage, which apparently is something that <a href="http://en.wikipedia.org/wiki/Bandwidth_throttling#ISP_bandwidth_throttling" target="_blank">ISPs can&rsquo;t understand too</a>.</p>
+
+<p>In my opinion the bigger problem here is that Google apparently accepted to pay the fees (even worst since the government is also forcing a decision favorable to the ISPs):<blockquote></p>
+
+<p>French President Francois Hollande warned Google on Wednesday that his government would legislate a so-called Google tax if the company doesn&rsquo;t reach a deal with French media companies.</blockquote></p>
+
+<p>If they accept to pay these fees they are going to open the gates to other ISPs to demand the same compensations. This is a completely anti-net-neutrality move, which goes in the inverse direction of Google&rsquo;s ideals.<blockquote></p>
+
+<p>Google has also been faced with demands for compensation from content providers such as newspapers, who charge the search giant makes lots of advertising revenue from referencing their material.</blockquote></p>
+
+<p>What?! If you put such material on your website and <strong>allow</strong> Google to index it so people can find you, which will generate profits over the ads you have your website, you should instead pay Google (if you don&rsquo;t use AdSense) for making it a lot easier to generate traffic to your ads.<blockquote></p>
+
+<p>Hollande said &ldquo;Those who make a profit from the information&rdquo; produced by media companies should participate in their financing.</blockquote></p>
+
+<p>If the information isn&rsquo;t already publicly available, on the media company&rsquo;s website and they allowed Google to index their information, there&rsquo;s no way Google should pay for the profits they are making with ads.</p>
+
+<p>If we really want the internet to continue as it was intended to be companies that are facing these issues should promptly oppose them and make their opinion public, just like what happened with SOPA and PIPA last year. Otherwise things are only going to get worst than they already are. </p>
+
+</div>
+</article>
+
+<hr>
+
+
+		</div>
+
+		<!-- Pager -->
+		<nav class="pager">
+	<p>
+		<a href='/currentflow.net//page/3.html'>&lt;</a>
+		<a href='/currentflow.net//page/1.html'>1</a>
+<a href='/currentflow.net//page/2.html'>2</a>
+<a href='/currentflow.net//page/3.html'>3</a>
+<a href='/currentflow.net//page/4.html' class='current'>4</a>
+<a href='/currentflow.net//page/5.html'>5</a>
+<a href='/currentflow.net//page/6.html'>6</a>
+<a href='/currentflow.net//page/7.html'>7</a>
+<a href='/currentflow.net//page/8.html'>8</a>
+<a href='/currentflow.net//page/9.html'>9</a>
+<a href='/currentflow.net//page/10.html'>10</a>
+
+		<a href='/currentflow.net//page/5.html'>&gt;</a>
+	</p>
+</nav>
+
+
+
+		<!-- Page footer -->
+		<footer>
+			<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+
+
+		</footer>
+	</body>
+</html>
+

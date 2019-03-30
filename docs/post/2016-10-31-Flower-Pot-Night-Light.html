@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous" />
+
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+
+
+	</head>
+
+	<body>
+		<!--[if IE]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+		<![endif]-->
+
+		<!-- Header -->
+		<header>
+			<div class="title-block">
+	<h1><a href="/currentflow.net/">Current Flow</a></h1>
+	<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+
+<!-- Navigation Bar -->
+<nav>
+	<ul>
+		<li><a href="/currentflow.net/">Home</a></li>
+		<li><a href="https://nathancampos.me/">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+</nav>
+
+
+		</header>
+
+		<!-- Articles -->
+		<div class="article-container">
+			<hr>
+			<article>
+	<h2><a href="/currentflow.net/post/2016-10-31-Flower-Pot-Night-Light.html">Flower Pot Night Light</a></h2>
+	<nav>Nathan Campos - Mon 31 October 2016</nav>
+
+	<div class="article-body"><meta name="title" content="Flower Pot Night Light">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2016-10-31">
+
+<p>A couple of months back (April if I recall) I was bored and looking for a nice project to kill some time in a rainy saturday. I decided to build a nice night light for my bedroom. I had a set of restrictions put in place so that I would be pleased with the final result, these were:<ul><li>Must run on AAs<li>Adjustable intensity<li>Small and cute<li>Should be built entirely with parts that I had on hand</ul></p>
+
+<p class="image-container"><img alt="In use" src="http://i.imgur.com/EykXSO9.jpg" /></p>
+
+<p>The first challenge was to find a nice enclosure, since this was going to be used as decoration it couldn&rsquo;t just be a bare protoboard with some LEDs or a boring project box. While looking through the pile of stuff (most people would call trash) I had stored in various places around the house, I found a couple of cubic flower pots made in various materials. I thought the ceramic one would fit my bedroom quite well, so that part was done.</p>
+
+<p class="image-container"><img alt="Sanding the case" src="http://i.imgur.com/9E2M1hN.jpg" /></p>
+
+<p>The next thing would be to find a diffuser to cover the LEDs and and give a more uniform light. My first idea was to use acrylic or something like that, but sadly I didn&rsquo;t have any on hand so I had to improvise. Again I went looking through my stuff and found an empty Ferrero Rocher enclosure (I knew I would use it some day), all I had to do was sand and cut it so it would fit the flower pot.</p>
+
+<p class="image-container"><img alt="The finalized board" src="http://i.imgur.com/43fRXNA.jpg" /></p>
+
+<p>The last and most boring part was to solder all the LEDs, they are in a series parallel arrangement, with 9 parallel groups of 2 in series so that I could use a 9V supply. For driving them I decided to build a simple constant current sink with the <a href="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Current_Limiter_NPN.PNG/200px-Current_Limiter_NPN.PNG" target="_blank">two NPN transistors in a feedback configuration</a> and designed it in such a way that it would be adjustable up to 100mA.</p>
+
+<p>If you want to see more pictures of the whole process they are all available in this album:<blockquote class="imgur-embed-pub" data-id="a/cMHcO" lang="en"><a href="//imgur.com/cMHcO" target="_blank">Flower Pot Night Light</a></blockquote></p>
+
+</div>
+</article>
+
+<hr>
+
+
+		</div>
+
+		<!-- Pager -->
+		
+
+		<!-- Page footer -->
+		<footer>
+			<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+
+
+		</footer>
+	</body>
+</html>
+
