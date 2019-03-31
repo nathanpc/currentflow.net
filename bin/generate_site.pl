@@ -14,6 +14,7 @@ use lib File::Spec->catdir($FindBin::Bin, '..', 'lib');
 
 use Utils::Posts;
 use Utils::Index;
+use Utils::Sitemap;
 
 # Open the config file.
 print colored('Reading the configuration file...', 'blue') . "\n";
@@ -27,6 +28,10 @@ my @posts = Utils::Posts::get_filenames($config);
 print colored('Generating pages...', 'blue') . "\n";
 Utils::Index::create_pages($config, @posts);
 Utils::Posts::create_pages($config, @posts);
+
+# Generate sitemap.
+print colored('Generating sitemap...', 'blue') . "\n";
+Utils::Sitemap::generate($config);
 
 __END__
 

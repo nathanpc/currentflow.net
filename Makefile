@@ -7,9 +7,9 @@ OUTFOLDER = $(shell ./bin/get_output_path.pl)
 
 all: clean
 	@./bin/make_folders.sh
+	@./bin/copy_static.sh
 	@./bin/generate_site.pl
 	@./bin/copy_index.sh
-	@./bin/copy_static.sh
 	@./bin/finished.sh
 
 clean:
