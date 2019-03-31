@@ -85,20 +85,20 @@ Page::Post - Abstract representation of a post page.
   my $config = Config::Tiny->read('levissimo.conf');
   
   # This is the most common way to use this class.
-  Page::Index->render(
+  Page::Post->render(
     config => $config,
 	file => 'posts/article.html'
   );
 
   # The same as the above, but longer.
-  my $page = Page::Index->new($config, 'posts/article.html');
+  my $page = Page::Post->new($config, 'posts/article.html');
   $page->build();
 
 =head1 METHODS
 
 =over 4
 
-=item I<$page> = C<Page::Index>->C<new>(I<$config>, I<$file>)
+=item I<$page> = C<Page::Post>->C<new>(I<$config>, I<$file>)
 
 Initializes a new post page object with a configuration set by I<$config> and a
 post file I<$file>.
@@ -109,7 +109,7 @@ Note that I<$config> should be a C<Config::Tiny> object.
 
 Builds the page and writes it to the output file.
 
-=item I<$page> = C<Page::Index>->C<render>(I<%params>)
+=item I<$page> = C<Page::Post>->C<render>(I<%params>)
 
 Does everything you need to get from start to finish in a single line. All you
 have to do is supply it with a C<Config::Tiny> as I<config> and a post file as
