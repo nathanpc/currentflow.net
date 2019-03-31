@@ -101,6 +101,25 @@ article > .article-body img {
 	max-width: 100%;
 }
 
+article > .article-body ul li {
+	color: #454545;
+	list-style: none;
+}
+
+article > .article-body ul li::before {
+	position: relative;
+	top: 2px;
+	margin-left: -15px;
+	margin-right: 14px;
+
+	content: "\25AA";
+
+	font-size: 29px;
+	line-height: 21px;
+
+	color: rgb(255, 214, 95);
+}
+
 .pager {
 	text-align: center;
 }
