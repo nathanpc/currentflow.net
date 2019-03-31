@@ -37,8 +37,7 @@ sub new {
 
 	# Parse the article.
 	$self->_parse_file();
-	$self->{url} = $self->{_config}->{server}->{path} . 'post/' .
-		$self->url_slug . '.html';
+	$self->{url} = $self->{_config}->{server}->{path} . $self->location;
 
 	return $self;
 }
@@ -62,14 +61,36 @@ sub render {
 
 # Get a URL slug for the post.
 sub url_slug {
-	my ($self) = @_;
-	my $slug = join(' ', $self->{date}, $self->{title});
+	my ($self, $param) = @_;
+	my $slug;
+
+	# Deecide which parameter to use to build the slug.
+	if (not defined $param) {
+		# Use both date and title.
+		$slug = join(' ', $self->{date}, $self->{title});
+	} elsif ($param eq 'date') {
+		# Use date.
+		$slug = $self->{date};
+	} elsif ($param eq 'title') {
+		# Use title.
+		$slug = $self->{title};
+	} else {
+		# This does not compute.
+		croak 'Parameter passed for URL slugging is not recognized';
+	}
 
 	# Create the slug.
 	$slug =~ s/[^\w\d\-_]/\-/g;  # Substitute everything illegal for dashes.
 	$slug =~ s/\-+/\-/g;         # Remove duplicate dashes.
 
 	return $slug;
+}
+
+# Gets the post location.
+sub location {
+	my ($self) = @_;
+	return 'post/' . $self->url_slug('date') . '/' . $self->url_slug('title') .
+		'/';
 }
 
 # Parses an article file and populates the class.
@@ -160,9 +181,14 @@ Page::Object::Article - A simple object representing a article.
 
   # Get the article output.
   my $output = $article->render();
-
+  
+  # Get the location of the article (omitting the index.html part).
+  my $loc = $article->location;
+  
   # Get a URL slug for the article.
   my $slug = $article->url_slug;
+  $slug = $article->url_slug('date');
+  $slug = $article->url_slug('title');
 
 =head1 METHODS
 
@@ -179,9 +205,21 @@ I<config>.
 Runs the parser through the post file and generates a output according to the
 default article template.
 
-=item I<$slug> = I<$article>->C<url_slug>
+=item I<$locaiton> = I<$article>->C<location>
+
+Returns only the article location, omitting the server location and
+I</index.html>.
+
+B<Example>: If the final URL will look like
+L<http://example.com/post/2019-12-23/Some-Interesting-Post/index.html>, this
+function will return just I<post/2019-12-23/Some-Interesting-Post/>.
+
+=item I<$slug> = I<$article>->C<url_slug>(I<[$param]>)
 
 Returns a URL slug representation of the article.
+
+I<$param> is optional and can either be I<date> or I<title>. If omitted, this
+function will return a slug with both date and title in it.
 
 =back
 

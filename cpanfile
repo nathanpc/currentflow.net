@@ -23,6 +23,7 @@ requires 'FindBin';
 requires 'File::Basename';
 requires 'File::Spec';
 requires 'File::Slurp';
+requires 'File::Path';
 
 # Web components minification.
 requires 'HTML::Packer';

@@ -6,6 +6,7 @@ use strict;
 use warnings;
 use autodie;
 
+use File::Path qw(make_path);
 use Term::ANSIColor;
 
 use Page::Base;
@@ -28,10 +29,12 @@ sub new {
 	);
 
 	# Create post filename.
-	my $fn = 'post/' . $self->{article}->url_slug . '.html';
+	my $fn = $self->{article}->location . '/index.html';
 
-	# Create base page object.
-	print "   " . $self->{article}->url_slug . ".html ";
+	# Create base page object and required folders.
+	print "   " . $self->{article}->url_slug('date') . '/' .
+		$self->{article}->url_slug('title') . "/index.html ";
+	make_path($self->{_config}->{folders}->{output} . $self->{article}->location);
 	$self->{_page} = Page::Base->new($config, $template, $fn);
 
 	bless $self, $class;
