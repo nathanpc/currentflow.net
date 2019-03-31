@@ -24,6 +24,7 @@ requires 'File::Basename';
 requires 'File::Spec';
 requires 'File::Slurp';
 requires 'File::Path';
+requires 'File::Find::Rule';
 
 # Web components minification.
 requires 'HTML::Packer';
