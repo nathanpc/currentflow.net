@@ -6,6 +6,7 @@ use strict;
 use warnings;
 use autodie;
 
+use File::Path qw(make_path);
 use Term::ANSIColor;
 
 use Page::Base;
@@ -29,24 +30,17 @@ sub new {
 	);
 
 	# Create a new base page according to the page number.
+	my $num = $page_num + 1;  # More human-friendly page representation.
+	my $page_name = "page/$num/index.html";
+
+	# Print directory change if is the first new page.
 	if ($page_num == 0) {
-		print " index.html ";
-		$self->{_page} = Page::Base->new($config, $template, 'index.html');
-	} elsif ($page_num > 0) {
-		my $num = $page_num + 1;  # More human-friendly page representation.
-		my $page_name = "page/$num.html";
-
-		# Print directory change if is the first new page.
-		if ($page_num == 1) {
-			print colored(" page/", 'cyan') . "\n";
-
-			# Cheating a bit... Let's just assume that the index page was OK.
-			print "   1.html " . colored('OK', 'green') . "\n";
-		}
-
-		print "   $num.html ";
-		$self->{_page} = Page::Base->new($config, $template, $page_name);
+		print colored(" page/", 'cyan') . "\n";
 	}
+
+	print "   $num/index.html ";
+	make_path($self->{_config}->{folders}->{output} . "/page/$num/");
+	$self->{_page} = Page::Base->new($config, $template, $page_name);
 
 	bless $self, $class;
 	return $self;
@@ -139,8 +133,8 @@ sub _generate_pager {
 		# Remember that the filenames are human-friendly, so they start at 1,
 		# while the page_num starts at 0, so the previous page is just the
 		# current value of page_num.
-		$prev = "<a href='" . $self->{_config}->{server}->{path} . "/page/" .
-			$self->{page_num} . ".html'>&lt;</a>";
+		$prev = "<a href='" . $self->{_config}->{server}->{path} . "page/" .
+			$self->{page_num} . "/'>&lt;</a>";
 	}
 
 	# Generate inner items.
@@ -148,11 +142,11 @@ sub _generate_pager {
 	for (my $i = 0; $i < $self->{_page_count}; $i++) {
 		if ($i == $self->{page_num}) {
 			# Current page link.
-			$items .= "<a href='" . $self->{_config}->{server}->{path} . "/page/" .
-				($i + 1) . ".html' class='current'>" . ($i + 1) . "</a>\n";
+			$items .= "<a href='" . $self->{_config}->{server}->{path} . "page/" .
+				($i + 1) . "/' class='current'>" . ($i + 1) . "</a>\n";
 		} else {
-			$items .= "<a href='" . $self->{_config}->{server}->{path} . "/page/" .
-				($i + 1) . ".html'>" . ($i + 1) . "</a>\n";
+			$items .= "<a href='" . $self->{_config}->{server}->{path} . "page/" .
+				($i + 1) . "/'>" . ($i + 1) . "</a>\n";
 		}
 	}
 
@@ -161,8 +155,8 @@ sub _generate_pager {
 	if (($self->{page_num} + 1) < $self->{_page_count}) {
 		# As explained before, page_num is start at 0, so we need to add 2 to
 		# get the next human-friendly page.
-		$next = "<a href='" . $self->{_config}->{server}->{path} . "/page/" .
-			($self->{page_num} + 2) . ".html'>&gt;</a>";
+		$next = "<a href='" . $self->{_config}->{server}->{path} . "page/" .
+			($self->{page_num} + 2) . "/'>&gt;</a>";
 	}
 
 	return $pager->run(
