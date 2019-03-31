@@ -35,6 +35,12 @@ hr {
 	border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
+blockquote {
+	border-left: 4px solid rgb(255, 214, 95);
+	margin-left: 30px;
+	padding-left: 10px;
+}
+
 .title-block {
 	display: inline-block;
 }
@@ -93,6 +99,25 @@ article > .article-body .image-container {
 
 article > .article-body img {
 	max-width: 100%;
+}
+
+article > .article-body ul li {
+	color: #454545;
+	list-style: none;
+}
+
+article > .article-body ul li::before {
+	position: relative;
+	top: 2px;
+	margin-left: -15px;
+	margin-right: 14px;
+
+	content: "\25AA";
+
+	font-size: 29px;
+	line-height: 21px;
+
+	color: rgb(255, 214, 95);
 }
 
 .pager {

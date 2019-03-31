@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous"/>
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+</head>
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<!-- Header -->
+<header>
+<div class="title-block">
+<h1><a href="/currentflow.net/">Current Flow</a></h1>
+<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+<!-- Navigation Bar -->
+<nav>
+<ul>
+<li><a href="/currentflow.net/">Home</a></li>
+<li><a href="https://github.com/nathanpc">GitHub</a></li>
+<li><a href="https://www.linkedin.com/in/nathanpc">LinkedIn</a></li>
+<li><a href="https://nathancampos.me/">About me</a></li>
+</ul>
+</nav>
+</header>
+<!-- Articles -->
+<div class="article-container">
+<hr>
+<article>
+<h2><a href="/currentflow.net/post/2012-06-08/Using-bbUI-s-onscreenready-and-ondomready-to-Dynamically-Change-Your-HTML/">Using bbUIâs onscreenready and ondomready to Dynamically Change Your HTML</a></h2>
+<nav>Nathan Campos - Fri 8 June 2012</nav>
+<div class="article-body"><meta name="title" content="Using bbUIâs onscreenready and ondomready to Dynamically Change Your HTML">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2012-06-08">
+<p>I started playing a bit with BlackBerry development these days and since I&rsquo;m not the best at Java (also hate how it&rsquo;s difficult to do simple things with it) I choose their awesome framework for HTML5 native web development called <a href="https://developer.blackberry.com/html5/" target="_blank">WebWorks</a>. I really loved it because it&rsquo;s like PhoneGap, but a lot easier to build plugins (extensions on WebWorks) for it to make your native WebApp feel a lot more native.</p>
+<p>Another great thing that RIM did to make the life of WebWorks developers easier and create apps that are exactly like native ones is a Javascript framework called <a href="https://github.com/blackberry/bbUI.js" target="_blank">bbUI.js</a>, which is like jQuery Mobile, but seriously, it&rsquo;s a lot more than just a UI framework. It makes it a lot easier to interact with the OS, override the back button for example, and makes your development cycle look a lot with native development by using <a href="https://github.com/blackberry/bbUI.js/wiki/Screens" target="_blank"><em>screens</em></a>. On this post I&rsquo;ll teach you how to dynamically manipulate the screen&rsquo;s HTML before it&rsquo;s processed by the bbUI library.</p>
+<p>One of the first things that you&rsquo;ll notice after you start working with bbUI is that it&rsquo;s not just a collection Javascript functions and CSS stylings, it actually reformat and customize your screen&rsquo;s HTML before it&rsquo;s shown to the user. As an example, this simple <em>image-list</em> item declaration in your screen HTML source looks like this:</p>
+<p><code id="gist-2902335"></code></p>
+<p>After it&rsquo;s processed by the library and shown to the user it will look like this:</p>
+<p><code id="gist-2902339"></code></p>
+<p>Hopefully we can easily manipulate our screen elements and other things before and after it&rsquo;s processed by bbUI. This is done with the <strong>bb.init()</strong> function (you can always read more at their <a href="https://github.com/blackberry/bbUI.js/wiki/Toolkit-Initialization" target="_blank">documentation</a>). This will be called when the application starts and can be used to listen to events like when a screen is loaded. The main ones are <strong>onscreenready</strong> and <strong>ondomready</strong>.</p>
+<p><strong>onscreenready:</strong> This event will be fired before the sources get processed by the library, so here is where you should manipulate, add or remove things from your HTML source using Javascript, so after it&rsquo;s done the code will be passed to bbUI to be processed.</p>
+<p><strong>ondomready:</strong> This event will be fired when the screen finished loading and it has been already processed by bbUI and shown to the user. Here you can put things like alerts and other things that will be used to interact with the user, also some little editing to the screen&rsquo;s source like renaming a field grabbing some information from a field and etc.</p>
+<p>Here is a example of a <strong>bb.init()</strong> call:</p>
+<p><code id="gist-2902343"></code></p>
+<p>The code is almost self-explanatory. The <strong>id</strong> is the name, second argument, you gave to a screen when you call it to be processed, for example <em>bb.pushScreen(&ldquo;screen/main.html&rdquo;, &ldquo;main&rdquo;)</em>. And <strong>element</strong> is the screen source code, which is used to be manipulated before the screen is loaded.</p>
+<p>A little problem that some developers might come across while using bbUI for the first time is that when you want to append or change the HTML of the screen before it&rsquo;s processed by bbUI you might write your code like if the HTML was already loaded onto the screen, but it&rsquo;s not. Here is an example of a code that won&rsquo;t work, used to populate a <em>image-list</em> and then show a button that was hidden (using jQuery):</p>
+<p><code id="gist-2902345"></code></p>
+<p>The main problem here is that it&rsquo;s using <strong>document</strong> as the source to be manipulated. Since bbUI still hasn&rsquo;t appended the screen into the <strong>document</strong> it will give you an error. In order to correct this you should replace <strong>document</strong> with <strong>element</strong>, that is passed by the <strong>onscreenready</strong> event. If you have any jQuery code, just add <strong>element</strong> as a <strong>context</strong> argument as shown below in the corrected code:</p>
+<p><code id="gist-2902353"></code></p>
+<p>That&rsquo;s it! Now you know how to use the <strong>onscreenready</strong> and <strong>ondomready</strong> events to dynamically insert or modify your bbUI screen&rsquo;s. Any questions or suggestions just leave a comment and I&rsquo;ll reply as soon as possible. </p>
+</div>
+</article>
+<hr>
+</div>
+<!-- Pager -->
+<!-- Page footer -->
+<footer>
+<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+</footer>
+</body>
+</html>

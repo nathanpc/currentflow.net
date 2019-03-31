@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Current Flow</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sanitize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css" integrity="sha256-gk3z+XTkT2rjrvAxcKDA15OH4w1FssyEwnSC3WnKbWU=" crossorigin="anonymous"/>
+<!-- Prism (Syntax Highlighting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js" integrity="sha256-jc6y1s/Y+F+78EgCT/lI2lyU7ys+PFYrRSJ6q8/R8+o=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU=" crossorigin="anonymous"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.js" integrity="sha256-SBdcXd1yqPQNixmtcMwSZJrzPTudHK/LXJxgLGCh3Go=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-uCRLqQjYcKEykao3hISbnt7+Pf9EfLCJUD2oD0JLq40=" crossorigin="anonymous"></script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';</script>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/currentflow.net//css/main.css">
+</head>
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<!-- Header -->
+<header>
+<div class="title-block">
+<h1><a href="/currentflow.net/">Current Flow</a></h1>
+<h3>Endeavours into the world of programming and electronics</h3>
+</div>
+<!-- Navigation Bar -->
+<nav>
+<ul>
+<li><a href="/currentflow.net/">Home</a></li>
+<li><a href="https://github.com/nathanpc">GitHub</a></li>
+<li><a href="https://www.linkedin.com/in/nathanpc">LinkedIn</a></li>
+<li><a href="https://nathancampos.me/">About me</a></li>
+</ul>
+</nav>
+</header>
+<!-- Articles -->
+<div class="article-container">
+<hr>
+<article>
+<h2><a href="/currentflow.net/post/2014-07-02/Low-Power-120V-240V-Isolation-Transformer/">Low Power 120V+240V Isolation Transformer</a></h2>
+<nav>Nathan Campos - Wed 2 July 2014</nav>
+<div class="article-body"><meta name="title" content="Low Power 120V+240V Isolation Transformer">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2014-07-02">
+<p>Since I was tired of using the <a href="http://thesignalpath.com/blogs/2011/06/12/camera-flash-circuit-and-nixie-tube-tutorial/" target="_blank">flash circuit hack</a> (<a href="https://plus.google.com/+NathanCampos/posts/f2zAfrbQJmw" target="_blank">my version</a>) to power my tube experiments I finally decided to build a isolation transformer using two identical step-down transformers as suggested by Mike in his <a href="http://www.electricstuff.co.uk/nixclock.html" target="_blank">nixie clock documentation</a>. Here are some photos of it:</p>
+<p><a href="http://i.imgur.com/AbDnT0c.jpg" target="_blank"><img alt="Inside" src="http://i.imgur.com/AbDnT0cl.jpg"/></a></p>
+<p><a href="http://i.imgur.com/TczLXGp.jpg" target="_blank"><img alt="Case" src="http://i.imgur.com/TczLXGpl.jpg"/></a></p>
+<p>I&rsquo;m planing to build a adjustable HV lab power supply in the future (which I may sell as a kit), so stay tuned. </p>
+</div>
+</article>
+<hr>
+<article>
+<h2><a href="/currentflow.net/post/2014-05-16/Generic-Chinese-MP3-Player-Teardown/">Generic Chinese MP3 Player Teardown</a></h2>
+<nav>Nathan Campos - Fri 16 May 2014</nav>
+<div class="article-body"><meta name="title" content="Generic Chinese MP3 Player Teardown">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2014-05-16">
+<p>As I&rsquo;ve described in <a href="/post/2014-05-11_Unbelievable_Prices.html" target="_blank">Unbelievable Prices</a>, I bought a crappy chinese MP3 player to use as a &ldquo;true&rdquo; sound source (instead of the function generator I use while early-testing my audio projects) for testing my audio circuits without having to worry about accidentally shorting 12V into my iPod&rsquo;s headphone jack or something like that while probing around.</p>
+<p>Yesterday it arrived and as it was expected, it&rsquo;s the best of Shenzhen. Horrible plastics and build quality, the buttons are super stiff, and overall a shitty product as it was expected to be, but since I&rsquo;m only going to use it for testing, I don&rsquo;t care. Here are some pictures of the &ldquo;beautiful&rdquo; thing:<iframe class="imgur-album" frameborder="0" height="550" src="http://imgur.com/a/XzdJb/embed" width="100%"></iframe></p>
+<p>As you can see it&rsquo;s a typical chinese product. The LiPo battery has no markings, except for a weird XI logo, it doesn&rsquo;t look like a protected pack and the flimsy wires that connect it to the main board can snap off at any second and short the thing out.</p>
+<p class="image-container"><img alt="Board view" src="http://i.imgur.com/mb14Iev.jpg"/></p>
+<p>Right next to what looks like the main processor, which sadly I couldn&rsquo;t find any information about it, there&rsquo;s a very nicely heat-shrunk clock crystal. On the center of the board you can see a generic <a href="http://www.ti.com/lit/ds/symlink/lm4871.pdf" target="_blank">4871</a> audio power amplifier, and on the left side there&rsquo;s a <a href="http://www.kingroad-china.net/Uploadfiles/2010763471154996.pdf" target="_blank">BK1080</a> FM receiver IC.</p>
+<p class="image-container"><img alt="Top board view" src="http://i.imgur.com/8FCIFdk.jpg"/></p>
+<p>On the other side of the board all you can see is the horrible LCD and the shittiest buttons you can buy in the Shenzhen market. </p>
+</div>
+</article>
+<hr>
+<article>
+<h2><a href="/currentflow.net/post/2014-05-14/Lightwave-AM-Transmitter-Receiver/">Lightwave AM Transmitter/Receiver</a></h2>
+<nav>Nathan Campos - Wed 14 May 2014</nav>
+<div class="article-body"><meta name="title" content="Lightwave AM Transmitter/Receiver">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2014-05-14">
+<p>This week I&rsquo;ve been experimenting with a very simple and cheap project for wireless transmissions, a <a href="http://en.wikipedia.org/wiki/Light" target="_blank">lightwave</a> AM transmitter and receiver based on <a href="http://www.cheapscience.com/2012/03/voice-led-modulator.html" target="_blank">Scott&rsquo;s design</a>, which was based on <a href="https://www.youtube.com/watch?v=vvF77YdkzcY" target="_blank">VK2ZAY&rsquo;s design</a>. In my final design I&rsquo;ve increased the base biasing resistors to decrease the size of the coupling capacitor and also used a darlington transistor to get more current gain.</p>
+<p class="image-container"><img alt="Schematic" src="http://i.imgur.com/yNXI5By.png"/></p>
+<p>The transmitter is pretty straight forward, the input modulates the current passing by the LED, which modulates the intensity of light, if you&rsquo;ve designed any class A amplifiers in the past you surely know how it works. The receiver is just a simple <a href="http://en.wikipedia.org/wiki/Transimpedance_amplifier" target="_blank">transimpedance amplifier</a>, which is amplifying the signal quite a bit (~56x gain) since the transmitter will usually be a bit far from the receiver. You can do the same with a op-amp, but I much prefer a discrete circuit for these simple things.</p>
+<p>You can put a buffer stage with a darlington <a href="http://en.wikipedia.org/wiki/Common_collector" target="_blank">emitter follower</a> on the output of the receiver so you can drive a speaker directly. Something that I would recommend is to add a small (10x gain maybe?) pre-amplifier for the transmitter, that way you&rsquo;ll get a bit more signal if you&rsquo;re source isn&rsquo;t very loud, specially if you want to drive some high power LEDs, since you have a lot of current headroom with those.</p>
+<p>If you want to experiment with different values in a simulation, here is the <a href="https://dl.dropboxusercontent.com/u/12174296/Current%20Flow/AM%20Lightwave%20Transmitter%20and%20Receiver.asc" target="_blank">LTspice schematic</a>. The best way to choose the best LED + photodiode combination to maximize the range is to build some breakout boards that you can plug different LEDs and photodiodes until you have the perfect combination.</p>
+<p class="image-container"><img alt="Prototypes" src="https://lh4.googleusercontent.com/-IhDiS3ZcUwY/U3GCc9c9haI/AAAAAAAAGnw/i4lY-vjRZjc/w903-h508-no/20140512_232400.jpg"/> </p>
+</div>
+</article>
+<hr>
+<article>
+<h2><a href="/currentflow.net/post/2014-05-11/Unbelievable-Prices/">Unbelievable Prices</a></h2>
+<nav>Nathan Campos - Sun 11 May 2014</nav>
+<div class="article-body"><meta name="title" content="Unbelievable Prices">
+<meta name="author" content="Nathan Campos">
+<meta name="created" content="2014-05-11">
+<p>Since I&rsquo;m building a bunch of audio circuits lately and I usually have to test them using a &ldquo;normal&rdquo; sound source (after extensively testing it with my function generator), I decided I should buy the cheapest chinese crap MP3 player just to protect my phone or any audio source that I&rsquo;m using. The last thing I want is to short something or accidentally apply a (relatively) high voltage to one of the audio pins, or do anything that could damage my device.</p>
+<p>So, I quickly went to <a href="http://mercadolivre.com.br/" target="_blank">MercadoLivre</a>, the brazilian version of eBay, and searched for the cheapest ($3 multimeter quality) MP3 player available, and sure enough, <a href="http://produto.mercadolivre.com.br/MLB-554445523-mini-mp3-playerfm-shuflle-clipentrada-microsd-suporta-32gb-_JM" target="_blank">this popped up</a>. It always amazed me how cheap they can produce this sort of crap, but seriously, $6.31 with taxes and all for a device with a shitty color display and all? That&rsquo;s just insane, they are probably assembling millions of those to be able to produce them at that price.</p>
+<p>So, in a nutshell, I&rsquo;ve bought this piece of junk which will happily suit my needs, since it&rsquo;s so fucking cheap that it can be considered disposable. </p>
+</div>
+</article>
+<hr>
+</div>
+<!-- Pager -->
+<nav class="pager">
+<p>
+<a href='/currentflow.net/page/2/'>&lt;</a>
+<a href='/currentflow.net/page/1/'>1</a>
+<a href='/currentflow.net/page/2/'>2</a>
+<a href='/currentflow.net/page/3/' class='current'>3</a>
+<a href='/currentflow.net/page/4/'>4</a>
+<a href='/currentflow.net/page/5/'>5</a>
+<a href='/currentflow.net/page/6/'>6</a>
+<a href='/currentflow.net/page/7/'>7</a>
+<a href='/currentflow.net/page/8/'>8</a>
+<a href='/currentflow.net/page/9/'>9</a>
+<a href='/currentflow.net/page/10/'>10</a>
+<a href='/currentflow.net/page/4/'>&gt;</a>
+</p>
+</nav>
+<!-- Page footer -->
+<footer>
+<p>This blog is powered by <a href="https://github.com/nathanpc/levissimo">Levissimo</a>.</p>
+</footer>
+</body>
+</html>
