@@ -60,14 +60,22 @@ header > nav {
 
 header > nav > ul {
 	display: inline-flex;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 
 	list-style: none;
 	text-align: center;
+
+	white-space: nowrap;
+	overflow-x: scroll;
 }
 
 header > nav > ul > li {
+	margin: 0 auto;
+}
+
+header > nav > ul > li > a {
 	margin: 0 20px;
 }
 
@@ -82,6 +90,7 @@ header, footer, .article-container {
 
 article > h2 {
     margin-bottom: 3px;
+	line-height: 33px;
 }
 
 article > nav {
