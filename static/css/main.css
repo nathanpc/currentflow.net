@@ -112,7 +112,8 @@ article > .article-body ul li::before {
 	margin-left: -15px;
 	margin-right: 14px;
 
-	content: "\25AA";
+	font-family: serif;  /* Fixes a bug with emojis in Chrome for Android. */
+	content: "\25AA\FE0E";
 
 	font-size: 29px;
 	line-height: 21px;
