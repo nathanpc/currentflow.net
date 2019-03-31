@@ -9,6 +9,7 @@ use autodie;
 use File::Spec;
 use File::Slurp;
 use Term::ANSIColor;
+use HTML::Packer;
 
 use Template::Engine;
 
@@ -31,9 +32,19 @@ sub new {
 sub render {
 	my ($self, %vars) = @_;
 
+	# Get output and minify it.
+	my $content = $self->{_template}->run(%vars);
+	HTML::Packer::minify(
+		\$content,
+		remove_comments => 1,
+		do_javascript => 'best',
+		do_stylesheet => 'minify',
+		#html5 => 1
+	);
+
 	# Open the output file and write the template output to it.
 	open(my $output, '>:encoding(UTF-8)', $self->{_outputfile});
-	print $output $self->{_template}->run(%vars);
+	print $output $content;
 	close($output);
 }
 
