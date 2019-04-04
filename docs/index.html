@@ -63,13 +63,14 @@
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2016-10-31">
 <p>A couple of months back (April if I recall) I was bored and looking for a nice project to kill some time in a rainy saturday. I decided to build a nice night light for my bedroom. I had a set of restrictions put in place so that I would be pleased with the final result, these were:<ul><li>Must run on AAs<li>Adjustable intensity<li>Small and cute<li>Should be built entirely with parts that I had on hand</ul></p>
-<p class="image-container"><img alt="In use" src="http://i.imgur.com/EykXSO9.jpg"/></p>
+<p class="image-container"><img alt="In use" src="/img/flower-pot-night-light/in-use.jpg"/></p>
 <p>The first challenge was to find a nice enclosure, since this was going to be used as decoration it couldn&rsquo;t just be a bare protoboard with some LEDs or a boring project box. While looking through the pile of stuff (most people would call trash) I had stored in various places around the house, I found a couple of cubic flower pots made in various materials. I thought the ceramic one would fit my bedroom quite well, so that part was done.</p>
-<p class="image-container"><img alt="Sanding the case" src="http://i.imgur.com/9E2M1hN.jpg"/></p>
+<p class="image-container"><img alt="Sanding the case" src="/img/flower-pot-night-light/sanding.jpg"/></p>
 <p>The next thing would be to find a diffuser to cover the LEDs and and give a more uniform light. My first idea was to use acrylic or something like that, but sadly I didn&rsquo;t have any on hand so I had to improvise. Again I went looking through my stuff and found an empty Ferrero Rocher enclosure (I knew I would use it some day), all I had to do was sand and cut it so it would fit the flower pot.</p>
-<p class="image-container"><img alt="The finalized board" src="http://i.imgur.com/43fRXNA.jpg"/></p>
+<p class="image-container"><img alt="The finalized board" src="/img/flower-pot-night-light/board.jpg"/></p>
 <p>The last and most boring part was to solder all the LEDs, they are in a series parallel arrangement, with 9 parallel groups of 2 in series so that I could use a 9V supply. For driving them I decided to build a simple constant current sink with the <a href="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Current_Limiter_NPN.PNG/200px-Current_Limiter_NPN.PNG" target="_blank">two NPN transistors in a feedback configuration</a> and designed it in such a way that it would be adjustable up to 100mA.</p>
-<p>If you want to see more pictures of the whole process they are all available in this album:<blockquote class="imgur-embed-pub" data-id="a/cMHcO" lang="en"><a href="//imgur.com/cMHcO" target="_blank">Flower Pot Night Light</a></blockquote></p>
+<p>If you want to see more pictures of the whole process they are all available in this album:</p>
+<p><blockquote class="imgur-embed-pub" lang="en" data-id="a/cMHcO"><a href="https://imgur.com/a/cMHcO">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script></p>
 </div>
 </article>
 <hr>
@@ -79,8 +80,8 @@
 <div class="article-body"><meta name="title" content="Incredible Chinese USB Car Power Supply">
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2016-03-28">
-<p>Recently I bought a couple of those <a href="http://i.imgur.com/zzU5zAu.jpg" target="_blank">super ultra cheap cigarette plug extensions</a> to distribute 12V in the lab for various things. As usual with everything chinese, I decided to open it up to see how horrible it was inside, but I also did that to upgrade the wiring since I would be pulling a couple of amps from this and I want to minimize the voltage drop.</p>
-<p class="image-container"><img alt="The thing" src="http://i.imgur.com/WinmYUy.jpg?1"/></p>
+<p>Recently I bought a couple of those <a href="/img/cheap-usb-car-supply/extension.jpg" target="_blank">super ultra cheap cigarette plug extensions</a> to distribute 12V in the lab for various things. As usual with everything chinese, I decided to open it up to see how horrible it was inside, but I also did that to upgrade the wiring since I would be pulling a couple of amps from this and I want to minimize the voltage drop.</p>
+<p class="image-container"><img alt="The thing" src="img/cheap-usb-car-supply/thing.jpg"/></p>
 <p>This is the incredible thing I found inside the thing as the 5V supply for the USB socket. A 7805 regulator and a 20 ohm 1/4W resistor <strong>in series with the 5V output</strong>. I guess it could have been worse, they could have used a 5.2V zener or the worst of all just a resistor voltage divider.</p>
 <p>China never ceases to amaze me. </p>
 </div>
@@ -92,16 +93,16 @@
 <div class="article-body"><meta name="title" content="MintyUSBoost: A tiny boost converter for low power projects">
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2016-02-19">
-<p><a href="http://i.imgur.com/o7x3ixk.jpg" target="_blank"><img alt="The MintyUSBoost in its fitting enclosure" src="http://i.imgur.com/o7x3ixk.jpg?1"/></a></p>
+<p class="image-container"><img alt="The MintyUSBoost in its fitting enclosure" src="/img/MintyUSBoost/final.jpg"/></p>
 <p>First of all a bit of a back story: This is my first attempt at a DC-DC converter, I&rsquo;ve always thought they were magic black-boxes that you just had to accept and building one yourself without a dedicated chip was something extremely difficult, something that could only be done with some high-speed complex analog circuitry or high-speed microcontrollers. I think a lot of people think the same way and I decided to try out my luck and it worked fine, switchmode converters are not black magic (now only RF is black magic), and I hope I dismistify them for you too in this article.</p>
 <p>The idea for this project came because I built a nice portable Class-A headphone amplifier (blog post coming in the future) and I wanted a simple power supply for it when I was using it with my computer, so I had to step the 5V from the USB to the 9V required by the amplifier circuit, the amplifier even though it&rsquo;s Class-A has a low current consumption, so the 2.5W from a normal USB was more than enough. Taking into consideration all this I needed a boost converter with the following specs:<ul><li>5V input at 450mA maximum to work with any USB port<li>9V output able to source up to 110mA (more than enough for my amp)<li>Acceptable voltage ripple and noise since this will be used with pre-amps and the headphone amp</ul></p>
-<p class="image-container"><img alt="Schematic of Rev A" src="http://i.imgur.com/erlyHAr.png"/></p>
+<p class="image-container"><img alt="Schematic of Rev A" src="/img/MintyUSBoost/schematic.png"/></p>
 <p>As you can see there&rsquo;s not a lot happening, and that&rsquo;s the beauty of this design, since it was made for low power projects it doesn&rsquo;t require any of the complexities, it was designed to be minimalistic and easy to build for someone that is new to switchmode converters. The entire feedback control loop is contained inside the PIC12F683 microcontroller, it is a pretty tiny and under-powered micro, but as you will see it works perfectly for this task.</p>
 <p>First the power input goes through a 3.3V regulator which provides power to the PIC and also acts as a voltage reference, then the microcontroller takes control of things and starts the PWM, pulsing current through the main inductor L1 while sensing the output voltage, if the voltage is lower than the set voltage it increases the PWM duty cycle, if the voltage is higher than the set voltage it decreases the PWM duty cycle, and that&rsquo;s all you need to create a simple switchmode converter. Here&rsquo;s the code that runs the whole thing (I still need to improve it, so changes are coming):</p>
 <p>If you&rsquo;re a bit more experienced with DC-DC converters you&rsquo;ll notice that the components used are a bit overkill, but that&rsquo;s by design because I wanted very low ripple at the output, also in the topic of components, I selected a IRL520 MOSFET and this is very important, since I&rsquo;m driving the gate with very low voltages a logic-level MOSFET is a must, if you want to use a regular MOSFET you&rsquo;ll have to increase the gate voltage using a <a href="http://electronics.stackexchange.com/q/91897" target="_blank">technique shown here</a>.</p>
 <p>A very handy tool for everyone designing their own DC-DC converters is <a href="https://learn.adafruit.com/diy-boost-calc/the-calculator" target="_blank">Adafruit&rsquo;s DIY DC-DC Boost Calculator</a>, it was extremely useful to choose the components used in this project and it&rsquo;ll surely help you in yours too. I&rsquo;ve also written a <a href="https://github.com/nathanpc/statistics-playground/blob/master/boost_calc.R" target="_blank">R script</a> to have a offline version of the calculator, it&rsquo;ll be improved in the future, but it&rsquo;s usable right now.</p>
 <p>The only issue that I&rsquo;m having with this project so far is the fact that no matter what I try, I can&rsquo;t get the crystal to oscillate, I checked everything, set all the registers correctly and I still can&rsquo;t get it to work, if anyone wants to help it&rsquo;ll be greatly appreciated.</p>
-<p class="image-container"><img alt="Noise Figures" src="http://i.imgur.com/Hzm08DQ.png"/></p>
+<p class="image-container"><img alt="Noise Figures" src="img/MintyUSBoost/noise-scope.png"/></p>
 <p>Since all my designs have a lot of local decoupling to keep any noise or ripple from the power source away from sensitive parts I didn&rsquo;t care too much about having extremely low ripple/noise, but if you want to upgrade this you can add a small shunt regulator to really kill any ripple or just add a LC filter to the output.</p>
 <p>If you&rsquo;ve got any questions feel free to ask and I&rsquo;m open to suggestions for improvement. </p>
 </div>
