@@ -15,6 +15,9 @@ all: clean
 clean:
 	@-rm -r $(OUTFOLDER)
 
+resize:
+	@./bin/resize_originals.sh
+
 test:
 	prove -lvcf
 

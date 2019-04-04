@@ -35,7 +35,10 @@ function optimize_width {
 
 	if [ $width -gt $max_width ]; then
 		# Looks like we'll have to resize this one.
-		mogrify "$imagepath" -filter Triangle -define filter:support=2 -thumbnail $max_width -unsharp 0.25x0.25+8+0.065 -dither None -posterize 136 -define jpeg:fancy-upsampling=off -interlace none "$imagepath"
+		mogrify "$imagepath" -filter Triangle -define filter:support=2 \
+			-thumbnail $max_width -unsharp 0.25x0.25+8+0.065 -dither None \
+			-posterize 136 -define jpeg:fancy-upsampling=off -interlace none \
+			"$imagepath"
 
 		# Show the progress we've made.
 		echo -n "$(du -k "$imagepath" | cut -f1)k -> "
