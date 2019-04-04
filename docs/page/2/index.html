@@ -61,21 +61,21 @@
 <div class="article-body"><meta name="title" content="Power12: The Mini6 Again, But Better">
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2014-10-11">
-<p><a href="http://i.imgur.com/RJ9JStc.jpg" target="_blank"><img alt="Lid Open" src="http://i.imgur.com/RJ9JStcl.jpg"/></a></p>
+<p class="image-container"><img src="/img/power12/lid-open.jpg"></p>
 <p>I&rsquo;m back with another amplifier project, but this time it&rsquo;s kinda like a remake instead of a completely new amp. The story behind this project started 4 days after I completed the Mini6.</p>
 <p>While I was drilling the holes for the jacks on the Mini6, I accidentally put too much pressure on the acrylic enclosure and it cracked, it was very small crack, practically impossible to see, between the two RCA jacks on the front, but after using it for a while and noticing how the crack would open a little bit every time I plugged something in, I decided to fix it using super glue (<em>facepalm</em>) and while I was using the glue I didn&rsquo;t notice that one small drop fell in the PCB. I put everything back together and tested, it sounded horrible and when I looked inside I could see the stain of the glue which was destroying the sensitive part of the circuit. So in a moment of rage I decided to throw the whole amp in the trash and design a better one and put it in a better enclosure. So that&rsquo;s how the Power12 was born.</p>
-<p><a href="http://i.imgur.com/mh6FWhw.png" target="_blank"><img alt="Schematic" src="http://i.imgur.com/7ZWAG2ml.png"/></a></p>
+<p class="image-container"><img src="/img/power12/schematic.png"></p>
 <p>The first thing I did to the original design was add a <a href="http://en.wikipedia.org/wiki/Boucherot_cell" target="_blank">Zobel network</a> to increase the stability of the amplifier. The other modification I did was the addition of a <a href="http://en.wikipedia.org/wiki/Active_load" target="_blank">active load</a> in the gain stage. Sadly when I was designing it I forgot to add another active load for the differential pair, but this will be fixed in the next revision of the board (I&rsquo;ll also add a <a href="http://sound.westhost.com/project57.htm" target="_blank">SIM</a>).</p>
-<p><a href="http://i.imgur.com/jBaNaWM.jpg" target="_blank"><img alt="No heatsinks" src="http://i.imgur.com/jBaNaWMl.jpg"/></a></p>
+<p class="image-container"><img src="/img/power12/no-heatsinks.jpg"></p>
 <p>Populating the board was a pretty straight forward process since there aren&rsquo;t a lot of components to be placed and as usual the most difficult port was soldering the spade terminals to the ground plane.</p>
-<p><a href="http://i.imgur.com/A5TefkQ.jpg" target="_blank"><img alt="Enclosure" src="http://i.imgur.com/A5TefkQl.jpg"/></a></p>
+<p class="image-container"><img src="/img/power12/enclosure.jpg"></p>
 <p>This time I decided to use a very nice <a href="http://www.aliexpress.com/snapshot/6211709629.html" target="_blank">extruded aluminium enclosure</a> that I found on AliExpress. I was a bit skeptical at first about the quality of the enclosures, but when they arrived I was surprised how beautiful they were, and the quality of the extrusion was really good. The seller was great, emailed me to ask about the customs, shipped extremely fast, and packed everything extremely well to make sure nothing would scratch the very fragile black paint of the case and the panels.</p>
 <p>Since I decided to use a aluminium enclosure, the best combination would be a very minimalist design, so the only thing in the front panel is the power switch. This decision gave me the idea to place the power LED on the back, giving it a really cool look when it&rsquo;s powered on.</p>
-<p><a href="http://i.imgur.com/CaNWnfU.jpg" target="_blank"><img alt="Back panel" src="http://i.imgur.com/CaNWnfUl.jpg"/></a></p>
+<p class="image-container"><img src="/img/power12/back-panel.jpg"></p>
 <p>Drilling the holes for the 2.1mm power connectors was a pain in the ass since I didn&rsquo;t have a drill bit that was bigger than 8mm, so I was forced to use the &ldquo;wiggle&rdquo; technique to make the holes bigger and because of that the drill bit escaped the hole a couple of times and damaged a bit of the back plate, but since it&rsquo;s on the back no one will ever see my mistakes.</p>
-<p><a href="http://i.imgur.com/hDm09wz.png" target="_blank"><img alt="THD Plot" src="http://i.imgur.com/hDm09wzl.png"/></a></p>
+<p class="image-container"><img src="/img/power12/thd.png"></p>
 <p>The distortion figures are not the best you&rsquo;ve probably seen (it&rsquo;ll be a lot better when I add the second active load in Rev B), but it&rsquo;s low enough that you won&rsquo;t be able to notice it. The plot was created using a script I&rsquo;ve created called <a href="https://gist.github.com/nathanpc/464b65f48d494179be13" target="_blank">plot_thd.py</a>, running <a href="https://github.com/nathanpc/Power12/blob/master/spice/Rev%20A.cir" target="_blank">this SPICE circuit</a>. Sadly I don&rsquo;t have the equipment to measure the real figures, but I&rsquo;m planing to buy a <a href="http://www.keithley.com/products/dcac/audioanalyzer/?mn=2015" target="_blank">Keithley 2015</a> next month.</p>
-<p><a href="http://i.imgur.com/yWRiXer.png" target="_blank"><img alt="Temperature Profile" src="http://i.imgur.com/yWRiXer.png"/></a></p>
+<p class="image-container"><img src="/img/power12/temp-profile.png"></p>
 <p>One thing that I actually was able to measure was the temperature profile of the amplifier, and as you can see it runs pretty cool with those <a href="http://www.digikey.com/product-detail/en/FA-T220-38E/FA-T220-38E-ND/2416492" target="_blank">FA-T220-38E heatsinks</a>. Those figures were measured with the lid closed and with the amplifier right at the point of clipping with a 1kHz sine wave into a 8 ohm load. I&rsquo;ve used my <a href="http://www.keysight.com/en/pd-1765023-pn-U1242B/handheld-digital-multimeter-4-digit?cc=US&lc=eng" target="_blank">Agilent U1242B</a> multimeter in conjunction with a program I wrote called <a href="https://github.com/nathanpc/dmmlog" target="_blank">dmmlog</a> to grab the data, then <a href="https://github.com/nathanpc/plotcsv" target="_blank">plotcsv</a> to generate the graph you see. Sadly I forgot to take pictures of the test setup.</p>
 <p>If you want to see all the pictures of the project <a href="http://imgur.com/gallery/UqJ2X/" target="_blank">this Imgur album</a> contains all of them. If you want to have access to all of the files related to this project check out the <a href="https://github.com/nathanpc/Power12" target="_blank">GitHub repo</a>, and if you want to discuss it the best place to go would be the <a href="http://www.diyaudio.com/forums/solid-state/263255-power12-compact-6w-channel-power-amplifier.html" target="_blank">diyAudio thread</a>. </p>
 </div>
@@ -87,14 +87,15 @@
 <div class="article-body"><meta name="title" content="Mini6 Amplifier">
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2014-09-11">
-<p><a href="http://i.imgur.com/Ex8B5SV.jpg" target="_blank"><img alt="Mini6" src="http://i.imgur.com/Ex8B5SVl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini6/mini6.jpg"></p>
 <p>I was a bit bored a couple of weeks ago so I decided to design a very simple discrete amplifier rated for 6W/channel just to make sure it would&rsquo;t oscillate and be more confident to build bigger ones.</p>
-<p><a href="http://i.imgur.com/IkxUacW.png" target="_blank"><img alt="Schematic" src="http://i.imgur.com/IkxUacWl.png"/></a></p>
+<p class="image-container"><img src="/img/mini6/schematic.png"></p>
 <p>As you can see it&rsquo;s a fairly simple design with a op-amp pre-amplifier and a discrete power amplifier. Building it was extremely simple, the difficult part is always mounting all the panel components and wiring everything.</p>
-<p><a href="http://i.imgur.com/nrXiTnA.jpg" target="_blank"><img alt="Checking component values" src="http://i.imgur.com/nrXiTnAl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini6/checking-values.jpg"></p>
 <p>A while ago I built a program called <a href="https://github.com/nathanpc/build-bom" target="_blank">build-bom</a> to help me quickly find the component values when assembling a board. It&rsquo;s a great use for a old EeePC that you may have laying around.</p>
-<p><a href="http://i.imgur.com/TH4iYNU.jpg" target="_blank"><img alt="Overview" src="http://i.imgur.com/TH4iYNUl.jpg"/></a></p>
-<p>One thing that you may have noticed is that I&rsquo;ve used canned transistors instead of your typical plastic TO-92. The only reason I did this was because they looked cool and I have a bunch laying around.<iframe class="imgur-album" frameborder="0" height="550" src="//imgur.com/a/43Ic0/embed?background=f2f2f2&amp;text=1a1a1a&amp;link=4e76c9" width="100%"></iframe></p>
+<p class="image-container"><img src="/img/mini6/overview.jpg"></p>
+<p>One thing that you may have noticed is that I&rsquo;ve used canned transistors instead of your typical plastic TO-92. The only reason I did this was because they looked cool and I have a bunch laying around.
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/43Ic0"><a href="//imgur.com/43Ic0">Mini6</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 <p>If you want to know more about the amplifier check out the <a href="https://github.com/nathanpc/Mini6" target="_blank">GitHub repo</a>. </p>
 </div>
 </article>
@@ -105,25 +106,26 @@
 <div class="article-body"><meta name="title" content="Building the Mini12">
 <meta name="author" content="Nathan Campos">
 <meta name="created" content="2014-08-04">
-<p><a href="http://i.imgur.com/8EpHZ7C.jpg" target="_blank"><img alt="Mini12" src="http://i.imgur.com/8EpHZ7Cl.jpg"/></a></p>
+<p><strong>Update:</strong> This project was my first try at building an amplifier, because of this it is pretty awful in terms of performance, it has very noticeable crossover distorsion. For better designs please look at newer posts here.</p>
+<p class="image-container"><img src="/img/mini12/mini12.jpg"></p>
 <p>Last week, I decided to take on a very simple project: build a very low distortion, reasonably powerful, battery-powered amplifier that could fit in a very small, transparent enclosure that I had.</p>
 <p>The main idea was to have this very small amplifier that could be moved around the house and powered from some 18650 cells so that I could enjoy some music with my friends when they come for our regular LAN parties. Usually we use one of those crappy iPod dock/speaker things that everyone loves, but, personally, they don&rsquo;t sound very good to me.</p>
 <p>Since this was a quick project, I decided to make it as simple as possible to avoid any trouble. The easiest it could be was to use an audio op-amp driving a class B output made with darlington transistors with some negative feedback to keep the distortion really low, so that&rsquo;s what I did:</p>
-<p><a href="http://i.imgur.com/ooLOsXO.png" target="_blank"><img alt="Schematic" src="http://i.imgur.com/ooLOsXOl.png"/></a></p>
-<p>I also designed a <a href="http://i.imgur.com/JDpisI1.png" target="_blank">very simple peak detector</a> to detect any clipping on the output to make sure the signal was as clean as possible, but, sadly, my case was so small that I couldn&rsquo;t fit it in. Since it would be powered from 2 18650 packs (3 cells each) or a pair of 9V batteries, the <a href="http://i.imgur.com/1NUn6F1.png" target="_blank">power supply</a> is extremely simplistic.</p>
+<p class="image-container"><img src="/img/mini12/schematic.png"></p>
+<p>I also designed a <a href="/img/mini12/peak-detector.png" target="_blank">very simple peak detector</a> to detect any clipping on the output to make sure the signal was as clean as possible, but, sadly, my case was so small that I couldn&rsquo;t fit it in. Since it would be powered from 2 18650 packs (3 cells each) or a pair of 9V batteries, the <a href="/img/mini12/power-supply.png" target="_blank">power supply</a> is extremely simplistic.</p>
 <p>When all of the parts arrived, I decided to get everything prepared to be assembled the next day.</p>
-<p><a href="http://i.imgur.com/Vksp7yj.jpg" target="_blank"><img alt="Pre-Assembly" src="http://i.imgur.com/Vksp7yjl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini12/pre-assembly.jpg"></p>
 <p>Choosing where to put the jacks and switches was a bit tricky since the space inside the enclosure was extremely small.</p>
-<p><a href="http://i.imgur.com/MhXcuJV.jpg" target="_blank"><img alt="Holes Drilled" src="http://i.imgur.com/MhXcuJVl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini12/drilling.jpg"></p>
 <p>Since I wasn&rsquo;t patient enough to wait for a PCB, I decided to build the whole thing on a piece of protoboard which was a bit tricky because of the space the jacks took.</p>
-<p><a href="http://i.imgur.com/KbqiPc0.jpg" target="_blank"><img alt="Protoboard" src="http://i.imgur.com/KbqiPc0l.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini12/protoboard.jpg"></p>
 <p>After soldering the headphone jack and on/off switch, mounted from the inside, it was time to solder the RCA jacks which had to be mounted from the outside. This was very difficult since I had to make the shortest cable possible while making sure that I could still lift the board up to solder the cable to the PCB.</p>
-<p><a href="http://i.imgur.com/UQU7BnX.jpg" target="_blank"><img alt="More Jacks" src="http://i.imgur.com/UQU7BnXl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini12/more-jacks.jpg"></p>
 <p>Sliding the board back into place was extremely difficult, but after a lot of wiggling, it was perfectly placed on the bottom of the enclosure, and I was ready to plug the power jacks into the JST connectors on the board. It was the only way to mount them, otherwise I wouldn&rsquo;t be able to lift the board to solder them.</p>
-<p><a href="http://i.imgur.com/21HpbJZ.jpg" target="_blank"><img alt="Finished" src="http://i.imgur.com/21HpbJZl.jpg"/></a></p>
-<p>Since it was 1:38AM, I was quite tired, and since I had been working on this thing for <a href="http://i.imgur.com/JPnOwoW.jpg" target="_blank"><strong>7 hours and 12 minutes</strong></a>, I decided that it was time to sleep and leave the enclosure closing and testing for the next day. (<a href="http://i.imgur.com/J9wPMpI.jpg" target="_blank">Obligatory picture of the pile of wires and component leads</a>)</p>
+<p class="image-container"><img src="/img/mini12/finished.jpg"></p>
+<p>Since it was 1:38AM, I was quite tired, and since I had been working on this thing for <a href="/img/mini12/time.jpg" target="_blank"><strong>7 hours and 12 minutes</strong></a>, I decided that it was time to sleep and leave the enclosure closing and testing for the next day. (<a href="http://i.imgur.com/J9wPMpI.jpg" target="_blank">Obligatory picture of the pile of wires and component leads</a>)</p>
 <p>First thing to do in the morning was to test the little beast. This was the test setup (after using my oscilloscope and a dummy load to make sure everything was working fine). I had to use the living room table since my bench was a mess (as usual), and there was no space for the 2 speakers.</p>
-<p><a href="http://i.imgur.com/up9IEMW.jpg" target="_blank"><img alt="Speaker Testing" src="http://i.imgur.com/up9IEMWl.jpg"/></a></p>
+<p class="image-container"><img src="/img/mini12/testing.jpg"></p>
 <p>And that&rsquo;s all! If you want more technical information about the project, be sure to visit the <a href="https://github.com/nathanpc/mini12" target="_blank">GitHub repo</a>. If you want to discuss it, jump on over to the <a href="http://www.diyaudio.com/forums/solid-state/260161-mini12-my-first-amplifier.html" target="_blank">diyAudio thread</a>. </p>
 </div>
 </article>
