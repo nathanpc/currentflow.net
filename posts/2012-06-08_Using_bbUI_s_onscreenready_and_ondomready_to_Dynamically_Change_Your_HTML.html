@@ -8,17 +8,17 @@
 
 <p>One of the first things that you&rsquo;ll notice after you start working with bbUI is that it&rsquo;s not just a collection Javascript functions and CSS stylings, it actually reformat and customize your screen&rsquo;s HTML before it&rsquo;s shown to the user. As an example, this simple <em>image-list</em> item declaration in your screen HTML source looks like this:</p>
 
-<pre><code class="language-html"><div data-bb-type="item" data-bb-title="Title goes here" data-bb-img="images/test.png" onclick="alert('this was clicked')">A description is welcome.</div></code></pre>
+<pre><code class="language-markup"><script type="prism-html-markup"><div data-bb-type="item" data-bb-title="Title goes here" data-bb-img="images/test.png" onclick="alert('this was clicked')">A description is welcome.</div></script></code></pre>
 
 <p>After it&rsquo;s processed by the library and shown to the user it will look like this:</p>
 
-<pre><code class="language-html"><div data-bb-type="item" onclick="alert('this was clicked')" class="bb-hires-image-list-item" onmouseover="this.setAttribute('class','bb-hires-image-list-item-hover')" onmouseout="this.setAttribute('class','bb-hires-image-list-item')" x-blackberry-focusable="true"><img src="images/test.png">
+<pre><code class="language-markup"><script type="prism-html-markup"><div data-bb-type="item" onclick="alert('this was clicked')" class="bb-hires-image-list-item" onmouseover="this.setAttribute('class','bb-hires-image-list-item-hover')" onmouseout="this.setAttribute('class','bb-hires-image-list-item')" x-blackberry-focusable="true"><img src="images/test.png">
   <div class="details">
     <span class="title">Title goes here</span>
     <span class="accent-text"></span>
     <div class="description">A description is welcome.</div>
   </div>
-</div></code></pre>
+</div></script></code></pre>
 
 <p>Hopefully we can easily manipulate our screen elements and other things before and after it&rsquo;s processed by bbUI. This is done with the <strong>bb.init()</strong> function (you can always read more at their <a href="https://github.com/blackberry/bbUI.js/wiki/Toolkit-Initialization" target="_blank">documentation</a>). This will be called when the application starts and can be used to listen to events like when a screen is loaded. The main ones are <strong>onscreenready</strong> and <strong>ondomready</strong>.</p>
 
