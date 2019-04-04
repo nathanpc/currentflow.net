@@ -5,7 +5,7 @@
 ###
 ### Author: Nathan Campos <nathanpc@dreamintech.net>
 
-outfolder=$(./bin/get_output_path.pl)
+outfolder=$(./bin/get_config.pl 'folders/output')
 echo -e "\e[34mGenerating the main page...\e[0m"
 echo -n "  index.html "
 cp "$outfolder/page/1/index.html" "$outfolder/index.html"

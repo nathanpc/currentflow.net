@@ -3,7 +3,7 @@
 #
 # Author: Nathan Campos <nathan@innoveworkshop.com>
 
-OUTFOLDER = $(shell ./bin/get_output_path.pl)
+OUTFOLDER = $(shell ./bin/get_config.pl 'folders/output')
 
 all: clean
 	@./bin/make_folders.sh

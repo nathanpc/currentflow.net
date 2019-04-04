@@ -7,7 +7,7 @@
 ### Author: Nathan Campos <nathanpc@dreamintech.net>
 
 infolder="static"
-outfolder=$(./bin/get_output_path.pl noslash)
+outfolder=$(./bin/get_config.pl 'folders/output' | sed -e 's/\/$//')
 
 echo -e "\e[34mCopying static files...\e[0m"
 
@@ -16,20 +16,47 @@ echo -e "\e[34mCopying static files...\e[0m"
 
 # The fun way:
 
+# Checks if the image extension matches a array of known image extensions.
+# $1 - Filename to be checked.
+function is_image {
+	local imgexts=('jpg' 'jpeg' 'png')
+	local fext=${1##*.}
+	
+	if [[ " ${imgexts[*]} " == *" $fext "* ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
 # Go through a directory and copy the files in it.
 # $1 - Directory to copy files from.
 function copy_files {
 	for file in $1/*; do
 		# Trick to get how deep we are in a folder.
-		deep=$(awk -F"/" '{print NF-1}' <<< "$file")
+		local deep=$(awk -F"/" '{print NF-1}' <<< "$file")
 
 		# Copy if they are files.
 		if [[ -f $file ]]; then
+			# Get output file location.
+			local outfile="$outfolder/${file//$infolder\//}"
+
 			# Print "deepness" spaces.
 			perl -E "print '  ' x ($deep - 1)"
+
+			# Actually copy the file.
 			echo -n " $(basename $file)"
-			cp $file "$outfolder/${file//$infolder\//}"
-			echo -e "\e[32m OK\e[0m"
+			cp $file $outfile
+			echo -e "\e[32m OK \e[0m"
+
+			# Check if it is an optimizable image.
+			if is_image $outfile; then
+				# Print "deepness" spaces again.
+				perl -E "print '  ' x ($deep + 1)"
+
+				# Optimize image.
+				./bin/optimize_image.sh "$outfile"
+			fi
 		fi
 
 		# Go through the directory.

@@ -11,7 +11,7 @@ function ok {
 
 echo -e "\e[34mCreating output folders...\e[0m"
 
-outfolder=$(./bin/get_output_path.pl)
+outfolder=$(./bin/get_config.pl 'folders/output')
 echo -n " $outfolder"
 mkdir $outfolder
 ok
