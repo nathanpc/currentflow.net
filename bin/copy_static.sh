@@ -7,7 +7,7 @@
 ### Author: Nathan Campos <nathanpc@dreamintech.net>
 
 infolder="static"
-outfolder=$(./bin/get_output_path.pl noslash)
+outfolder=$(./bin/get_config.pl 'folders/output' | sed -e 's/\/$//')
 
 echo -e "\e[34mCopying static files...\e[0m"
 
