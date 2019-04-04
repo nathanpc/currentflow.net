@@ -19,6 +19,10 @@ p, li, blockquote {
 	line-height: 28px;
 }
 
+code {
+	background: #f5f2f0;
+}
+
 a {
 	color: #454545;
 	text-decoration: none;
