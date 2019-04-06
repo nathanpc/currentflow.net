@@ -47,6 +47,8 @@ sub build {
 
 	# Render the page.
 	$self->{_page}->render(
+		"article.title" => $self->{article}->{title},
+		"title.separator" => ' - ',
 		"server.path" => $self->{_config}->{server}->{path},
 		"blog.title" => $self->{_config}->{blog}->{title},
 		"blog.subtitle" => $self->{_config}->{blog}->{subtitle},
