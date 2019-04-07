@@ -5,11 +5,11 @@
  * Author: Nathan Campos <nathanpc@dreamintech.net>
  */
 
-/* General layout */
+/* General layout for the whole page. */
 body {
 	font-family: Open Sans, Arial;
-    font-size: 18px;
-    font-weight: normal;
+	font-size: 18px;
+	font-weight: normal;
 
 	color: #454545;
 	/*background-color: #FEFEFE;*/
@@ -27,7 +27,7 @@ a {
 	color: #454545;
 	text-decoration: none;
 	box-shadow: inset 0 -4px 0 rgb(255, 214, 95);
-	transition: background-color 0.8s;
+	transition: background-color 0.5s;
 }
 
 a:hover {
@@ -45,6 +45,7 @@ blockquote {
 	padding-left: 10px;
 }
 
+/* Page header. */
 .title-block {
 	display: inline-block;
 }
@@ -89,12 +90,13 @@ header, footer, .article-container {
 	margin-right: 1em;
 }
 
+/* General article area styling. */
 .article-container {
 	line-height: 26px;
 }
 
 article > h2 {
-    margin-bottom: 3px;
+	margin-bottom: 3px;
 	line-height: 33px;
 }
 
@@ -135,6 +137,60 @@ article > .article-body ul li::before {
 	color: rgb(255, 214, 95);
 }
 
+/* Image albums in articles. */
+article .album {
+	display: flex;
+}
+
+article .album > section {
+	display: flex;
+	flex-grow: 1;
+}
+
+article .album > .arrow {
+	display: flex;
+	padding: 0 5px;
+
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+
+	transition: background-color 0.5s;
+}
+
+article .album > .arrow:hover, article .album > .arrow:active {
+	background: rgb(255, 214, 95);
+}
+
+article .album figure {
+	margin: 0;
+	display: none;
+	width: 100%;
+	text-align: center;
+
+	background: rgb(31, 31, 31);
+}
+
+article .album figure.current {
+	display: block;
+}
+
+article .album img {
+	max-width: 100% !important;
+	max-height: 80vh;
+}
+
+article .album figcaption {
+	padding: 3px;
+	text-align: center;
+	background: rgb(255, 214, 95);
+}
+
+/* Index page selection. */
 .pager {
 	text-align: center;
 }
@@ -161,11 +217,32 @@ article > .article-body ul li::before {
 	color: #454545;
 }
 
+/* Footer */
 footer > p {
 	text-align: center;
 }
 
-/* Desktops */
+/*********************************************
+ * Styling specifically for Landscape Phones *
+ *********************************************/
+@media (min-width: 576px) {
+	article .album > .arrow {
+		font-size: 30px;
+	}
+}
+
+/************************************
+ * Styling specifically for Tablets *
+ ************************************/
+@media (min-width: 768px) {
+	article .album > .arrow {
+		font-size: 45px;
+	}
+}
+
+/*************************************
+ * Styling specifically for Desktops *
+ *************************************/
 @media (min-width: 992px) {
 	header, footer, .article-container {
 		width: 960px;
