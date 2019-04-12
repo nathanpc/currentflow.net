@@ -28,6 +28,11 @@ to GitHub Pages.
 Just run C<make> and the script will generate all the necessary files for
 deploying the website in the I<docs> folder.
 
+=head1 REQUIREMENTS
+
+You must have installed all of the third-party libraries listed in C<cpanfile>
+and also B<pngcrush> >v1.7.22.
+
 =head1 FOLDERS
 
 This project has a very simple folder layout for you to use and customize as
@@ -41,6 +46,8 @@ C<posts/> - Where you should place your posts.
 C<docs/> - The output folder where your finalized website should reside.
 
 =head1 TESTING
+
+I<Currently there are no tests, so this section is here for future upadtes.>
 
 To make sure everything is perfect for deployment you can run C<make test>,
 which will run all the unit tests to make sure that you have a working system.
