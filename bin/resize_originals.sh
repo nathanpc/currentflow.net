@@ -12,6 +12,7 @@ imagepath="static/img/"
 # Configuration variables.
 max_width=$(./bin/get_config.pl 'images/max_width')
 retina=$(./bin/get_config.pl 'images/retina')
+pngcrushed=$(./bin/get_config.pl 'images/pngcrush_resize')
 
 # Checks if the image is bigger than what is needed and shrinks it.
 function optimize_width {
@@ -41,6 +42,17 @@ function resize_images {
 
 			# Resize the image if needed.
 			optimize_width "$file"
+
+			# Optimize if it is a PNG.
+			if [[ $pngcrushed == '1' ]]; then
+				if [[ ${file##*.} == 'png' ]]; then
+					# Print the size after scaling.
+					echo -ne "\e[33m$(du -k "$file" | cut -f1)k\e[0m -> "
+
+					# Optimize it.
+					pngcrush -reduce -brute -q -ow "$file"
+				fi
+			fi
 
 			# Signal that everything went OK.
 			echo -e "\e[33m$(du -k "$file" | cut -f1)k\e[0m) \e[32mOK\e[0m"

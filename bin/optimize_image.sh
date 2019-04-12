@@ -16,6 +16,7 @@ fext=${imagepath##*.}
 # Configuration variables.
 max_width=$(./bin/get_config.pl 'images/max_width')
 retina=$(./bin/get_config.pl 'images/retina')
+pngcrushed=$(./bin/get_config.pl 'images/pngcrush_resize')
 
 # Optimizes JPEG images.
 function optimize_jpeg {
@@ -23,10 +24,13 @@ function optimize_jpeg {
 		JPEG -colorspace sRGB "$imagepath";
 }
 
+# Optimizes PNG images.
 function optimize_png {
-	convert "$imagepath" -define png:compression-filter=5 -define \
-		png:compression-level=9 -define png:compression-strategy=1 -define \
-		png:exclude-chunk=all -colorspace sRGB -strip "$imagepath"
+	# Only optimize the PNGs if they haven't been pngcrushed by "make resize"
+	# before.
+	if [[ $pngcrushed == '0' ]]; then
+		pngcrush -reduce -brute -q -ow "$imagepath"
+	fi
 }
 
 # Checks if the image is bigger than what is needed and shrinks it.
