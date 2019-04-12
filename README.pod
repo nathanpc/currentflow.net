@@ -45,6 +45,12 @@ layout and etc should be.
 C<posts/> - Where you should place your posts.
 C<docs/> - The output folder where your finalized website should reside.
 
+=head1 DEPLOYMENT
+
+Deploying the blog should be extremely simple, the automated way of doing it,
+which is optimized for GitHub Pages and will already resize the original images
+and optimze the output ones, is to just run C<./bin/deploy.sh "Commit message">.
+
 =head1 TESTING
 
 I<Currently there are no tests, so this section is here for future upadtes.>
