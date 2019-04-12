@@ -160,6 +160,8 @@ article .album > .arrow {
 	text-align: center;
 
 	transition: background-color 0.5s;
+	background: rgb(31, 31, 31);
+	color: white;
 }
 
 article .album > .arrow:hover, article .album > .arrow:active {
