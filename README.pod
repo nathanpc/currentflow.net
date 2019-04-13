@@ -33,6 +33,45 @@ deploying the website in the I<docs> folder.
 You must have installed all of the third-party libraries listed in C<cpanfile>
 and also B<pngcrush> >v1.7.22.
 
+=head1 SETTING UP
+
+This software is very easy to setup and keep up-to-date since it uses Git to
+manage everything.
+
+First of all you'll need to install all of the L<"REQUIREMENTS">, then I encourage
+you to take a look at the contents of each of the L<"FOLDERS"> and get used to the
+way this blog generator is structured and edit the configuration file.
+
+Begin by grabbing the latest version of the software from the project repo:
+
+  $ git clone https://github.com/nathanpc/levissimo.git <yourblog>
+  $ cd <yourblog>
+
+Then create a new repository with your GitHub account and set the C<origin> URL
+to your repo's clone URL:
+
+  $ git remote set-url origin <yourblog_repo>
+
+Now set up a C<upstream> URL so that you'll be able to keep you blog up-to-date:
+
+  $ git remote add upstream https://github.com/nathanpc/levissimo.git
+
+Push everything to your repo:
+
+  $ git push origin master
+  $ git push --all
+
+Now you can start writing some blog posts, messing with the configuration and
+editing the website styling. After your done follow the instructions in
+L<"DEPLOYMENT"> to learn how to easily generate your website and push it to
+GitHub Pages.
+
+Periodically check for updates to the generator by running:
+
+  $ make update
+
+Happy blogging!
+
 =head1 FOLDERS
 
 This project has a very simple folder layout for you to use and customize as
