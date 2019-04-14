@@ -45,6 +45,28 @@ blockquote {
 	padding-left: 10px;
 }
 
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 4px 10px;
+	white-space: nowrap;
+}
+
+thead > tr {
+	border-bottom: 1px solid rgb(255, 214, 95);;
+}
+
+tbody > tr {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+tbody > tr:last-child {
+	border-bottom: none;
+}
+
 /* Page header. */
 .title-block {
 	display: inline-block;
@@ -135,6 +157,10 @@ article > .article-body ul li::before {
 	line-height: 21px;
 
 	color: rgb(255, 214, 95);
+}
+
+.table-container {
+	overflow-x: auto;
 }
 
 /* Image albums in articles. */
