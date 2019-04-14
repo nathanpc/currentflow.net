@@ -1,6 +1,8 @@
-# Generated files.
-site/
+############ REMOVE THIS ############
+posts/
 docs/
+static/img/
+############ REMOVE THIS ############
 
 # Perl Misc.
 !Build/

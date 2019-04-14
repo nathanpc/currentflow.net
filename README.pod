@@ -56,6 +56,15 @@ Now set up a C<upstream> URL so that you'll be able to keep you blog up-to-date:
 
   $ git remote add upstream https://github.com/nathanpc/levissimo.git
 
+Then open the C<.gitignore> file in the root of the repo and remove the lines
+indicated by the comments:
+
+  ############ REMOVE THIS ############
+  posts/
+  docs/
+  static/img/
+  ############ REMOVE THIS ############
+
 Push everything to your repo:
 
   $ git push origin master
@@ -98,6 +107,42 @@ Where you should place your posts.
 The output folder where your finalized website should reside.
 
 =back
+
+=head1 EXAMPLE POST
+
+Here's an example post to get you started:
+
+  <meta name="title" content="Some Interesting Title">
+  <meta name="author" content="Your Name Here">
+  <meta name="created" content="2019-03-22"> <!-- YYYY-MM-DD -->
+  
+  <p>This is a simple paragraph.</p>
+  
+  <!-- This is how a image should be declared. -->
+  <p class="image-container"><img src="/img/test.jpg"></p>
+  
+  <p>Photo albums are cool, so here's one:</p>
+  
+  <nav class="album">
+    <div class="arrow">&lt;</div>
+    <section>
+      <figure class="current">
+        <img src="/img/1.jpg">
+        <figcaption>First image</figcaption>
+      </figure>
+      <figure>
+        <img src="/img/2.jpg">
+        <figcaption>Second image.</figcaption>
+      </figure>
+    </section>
+    <div class="arrow">&gt;</div>
+  </nav>
+  
+  <p>Closing paragraph.</p>
+
+As you can clearly see, it's very simple to write a post and you use plain old
+HTML for everything. No fancy markup. For more examples of blog posts check out
+the author's blog: https://github.com/nathanpc/currentflow.net/tree/master/posts
 
 =head1 DEPLOYMENT
 
