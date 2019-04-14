@@ -18,32 +18,131 @@ can easily be customized to fit into an existing website.
 The focus of this project is to use all the available standards in other
 to generate a blog, without silly things like Markdown with a front-matter.
 Posts are written with plain HTML, just like the rest of the website layout, and
-the additional parameters are specified using standardized C<meta> tags.
+the additional parameters are specified using standardized C<< <meta> >> tags.
 
-The default output folder is set to I<docs>, this way it can be easily deployed
+The default output folder is set to C<docs/>, this way it can be easily deployed
 to GitHub Pages.
 
 =head1 SYNOPSIS
 
 Just run C<make> and the script will generate all the necessary files for
-deploying the website in the I<docs> folder.
+deploying the website in the C<docs/> folder.
 
 =head1 REQUIREMENTS
 
 You must have installed all of the third-party libraries listed in C<cpanfile>
 and also B<pngcrush> >v1.7.22.
 
+=head1 SETTING UP
+
+This software is very easy to setup and keep up-to-date since it uses Git to
+manage everything.
+
+First of all you'll need to install all of the L<"REQUIREMENTS">, then I encourage
+you to take a look at the contents of each of the L<"FOLDERS"> and get used to the
+way this blog generator is structured and edit the configuration file.
+
+Begin by grabbing the latest version of the software from the project repo:
+
+  $ git clone https://github.com/nathanpc/levissimo.git <yourblog>
+  $ cd <yourblog>
+
+Then create a new repository with your GitHub account and set the C<origin> URL
+to your repo's clone URL:
+
+  $ git remote set-url origin <yourblog_repo>
+
+Now set up a C<upstream> URL so that you'll be able to keep you blog up-to-date:
+
+  $ git remote add upstream https://github.com/nathanpc/levissimo.git
+
+Then open the C<.gitignore> file in the root of the repo and remove the lines
+indicated by the comments:
+
+  ############ REMOVE THIS ############
+  posts/
+  docs/
+  static/img/
+  ############ REMOVE THIS ############
+
+Push everything to your repo:
+
+  $ git push origin master
+  $ git push --all
+
+Now you can start writing some blog posts, messing with the configuration and
+editing the website styling. After your done follow the instructions in
+L<"DEPLOYMENT"> to learn how to easily generate your website and push it to
+GitHub Pages.
+
+Periodically check for updates to the generator by running:
+
+  $ make update
+
+Happy blogging!
+
 =head1 FOLDERS
 
 This project has a very simple folder layout for you to use and customize as
 needed.
 
-C<static/> - Where all your static files should be placed. This folder will be
-copied as-is with its structure preserved to the output folder.
-C<template/> - Where all the important website templates for things like page
-layout and etc should be.
-C<posts/> - Where you should place your posts.
-C<docs/> - The output folder where your finalized website should reside.
+=over 4
+
+=item C<static/>
+
+Where all your static files should be placed. This folder will be copied as-is
+with its structure preserved to the output folder.
+
+=item C<template/>
+
+Where all the important website templates for things like page layout and etc
+should be.
+
+=item C<posts/>
+
+Where you should place your posts.
+
+=item C<docs/>
+
+The output folder where your finalized website should reside.
+
+=back
+
+=head1 EXAMPLE POST
+
+Here's an example post to get you started:
+
+  <meta name="title" content="Some Interesting Title">
+  <meta name="author" content="Your Name Here">
+  <meta name="created" content="2019-03-22"> <!-- YYYY-MM-DD -->
+  
+  <p>This is a simple paragraph.</p>
+  
+  <!-- This is how a image should be declared. -->
+  <p class="image-container"><img src="/img/test.jpg"></p>
+  
+  <p>Photo albums are cool, so here's one:</p>
+  
+  <nav class="album">
+    <div class="arrow">&lt;</div>
+    <section>
+      <figure class="current">
+        <img src="/img/1.jpg">
+        <figcaption>First image</figcaption>
+      </figure>
+      <figure>
+        <img src="/img/2.jpg">
+        <figcaption>Second image.</figcaption>
+      </figure>
+    </section>
+    <div class="arrow">&gt;</div>
+  </nav>
+  
+  <p>Closing paragraph.</p>
+
+As you can clearly see, it's very simple to write a post and you use plain old
+HTML for everything. No fancy markup. For more examples of blog posts check out
+the author's blog: https://github.com/nathanpc/currentflow.net/tree/master/posts
 
 =head1 DEPLOYMENT
 
@@ -53,7 +152,7 @@ and optimze the output ones, is to just run C<./bin/deploy.sh "Commit message">.
 
 =head1 TESTING
 
-I<Currently there are no tests, so this section is here for future upadtes.>
+I<Currently there are no tests, so this section is here for future updates.>
 
 To make sure everything is perfect for deployment you can run C<make test>,
 which will run all the unit tests to make sure that you have a working system.
@@ -61,7 +160,7 @@ which will run all the unit tests to make sure that you have a working system.
 =head1 LICENSE
 
 This project is licensed under the MIT license. For more information please read
-the I<LICENSE> file in the project root.
+the C<LICENSE> file in the project root.
 
 =head1 AUTHOR
 

@@ -18,6 +18,9 @@ clean:
 resize:
 	@./bin/resize_originals.sh
 
+update:
+	git pull upstream master
+
 test:
 	prove -lvcf
 
